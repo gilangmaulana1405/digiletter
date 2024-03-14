@@ -1,0 +1,21 @@
+/* Gaya untuk FixedColumns agar menutupi tulisan yang digeser */
+div.DTFC_LeftWrapper,
+div.DTFC_RightWrapper {
+    z-index: 1;
+    position: relative;
+}
+
+div.DTFC_LeftBodyLiner,
+div.DTFC_RightBodyLiner {
+    position: relative;
+}
+
+div.DTFC_LeftBodyLiner table.dataTable,
+div.DTFC_RightBodyLiner table.dataTable {
+    position: relative;
+    z-index: 2;
+}
+
+div.dataTables_scrollBody {
+    overflow: hidden;
+}
