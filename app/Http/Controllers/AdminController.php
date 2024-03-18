@@ -64,11 +64,14 @@ class AdminController extends Controller
             $item->judul_skripsi = ucfirst($item->judul_skripsi);
             return $item;
         });
+        
+        $jenisSurat = 'Surat Izin Penelitian';
 
         return view('admin.pages.listdata', [
-            'data' => $formattedData,
+            'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 
@@ -79,10 +82,13 @@ class AdminController extends Controller
 
         $data = SuratKeteranganAktif::orderBy('created_at', 'desc')->get();
 
+         $jenisSurat = 'Surat Keterangan Aktif Kuliah';
+
         return view('admin.pages.listdata', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
     public function listdataSuratKeteranganAktifOrtuPns()
@@ -92,10 +98,13 @@ class AdminController extends Controller
 
         $data = SuratKeteranganAktifOrtuPns::orderBy('created_at', 'desc')->get();
 
+         $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
+
         return view('admin.pages.listdata', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
     public function listdataSuratBebasPustaka()
@@ -105,10 +114,13 @@ class AdminController extends Controller
 
         $data = SuratBebasPustaka::orderBy('created_at', 'desc')->get();
 
+        $jenisSurat = 'Surat Bebas Pustaka';
+
         return view('admin.pages.listdata', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
     public function listdataSuratPengajuanCuti()
@@ -118,10 +130,13 @@ class AdminController extends Controller
 
         $data = SuratPengajuanCuti::orderBy('created_at', 'desc')->get();
 
+        $jenisSurat = 'Surat Pengajuan Cuti';
+
         return view('admin.pages.listdata', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 

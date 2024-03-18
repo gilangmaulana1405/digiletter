@@ -113,10 +113,13 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
 
         $data = SuratKeteranganAktifOrtuPns::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
+         $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
+
         return view('pages.riwayatsurat', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 

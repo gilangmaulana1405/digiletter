@@ -119,10 +119,13 @@ class SuratBebasPustakaController extends Controller
 
         $data = SuratBebasPustaka::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
+        $jenisSurat = 'Surat Bebas Pustaka';
+
         return view('pages.riwayatsurat', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 

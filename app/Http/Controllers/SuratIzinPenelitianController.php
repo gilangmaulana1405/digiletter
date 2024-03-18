@@ -184,12 +184,14 @@ class SuratIzinPenelitianController extends Controller
         return redirect()->back();
     }
 
-    public function riwayatSuratIzinPenelitian()
+    public function riwayatSuratIzinPenelitian(Request $request)
     {
         $navbarView = view('layouts/navbar');
         $sidebarView = view('layouts/sidebar');
 
         $data = SuratIzinPenelitian::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+
+        $jenisSurat = 'Surat Izin Penelitian';
 
         // Menggunakan ucfirst untuk mengubah huruf pertama menjadi besar
         $formattedData = $data->map(function ($item) {
@@ -201,7 +203,8 @@ class SuratIzinPenelitianController extends Controller
         return view('pages.riwayatsurat', [
             'data' => $formattedData,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 

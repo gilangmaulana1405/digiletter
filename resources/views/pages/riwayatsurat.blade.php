@@ -8,7 +8,7 @@ Riwayat Surat
 
 <div class="col-xl">
     <div class="card">
-        <h5 class="card-header">Riwayat Surat</h5>
+        <h5 class="card-header">Riwayat {{ $jenisSurat }}</h5>
         <div class="card-datatable table-responsive pt-0">
             <table class="table table-striped" ref="dataTable" id="riwayat-surat">
                 <thead>

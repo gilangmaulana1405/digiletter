@@ -121,11 +121,13 @@ class SuratKeteranganAktifController extends Controller
 
         $data = SuratKeteranganAktif::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
+        $jenisSurat = 'Surat Keterangan Aktif Kuliah';
 
         return view('pages.riwayatsurat', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 

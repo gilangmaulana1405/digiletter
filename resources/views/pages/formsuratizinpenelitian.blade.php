@@ -51,8 +51,8 @@ Surat Izin Penelitian
                     <label class="form-label" for="basic-icon-default-company">Lingkup</label>
                     <div class="input-group input-group-merge">
                         <select name="lingkup" id="select2IconsLingkup" class="select2-icons form-select">
-                            <option value="Internal" data-icon="ti ti-layers-intersect-2">Internal</option>
-                            <option value="Eksternal" data-icon="ti ti-layers-intersect-2">Eksternal</option>
+                            <option value="Internal" data-icon="ti ti-layers-intersect-2">Internal (Surat ditujukan ke Dekan Fasilkom)</option>
+                            <option value="Eksternal" data-icon="ti ti-layers-intersect-2">Eksternal (Surat ditujukan ke Instansi/Perusahaan lain)</option>
                         </select>
                     </div>
                 </div>

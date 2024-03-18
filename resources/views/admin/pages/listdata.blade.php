@@ -19,7 +19,7 @@ List Data Surat
     </div>
     <!-- Column Search -->
     <div class="card">
-        <h5 class="card-header">Pengajuan Surat</h5>
+        <h5 class="card-header">Pengajuan {{ $jenisSurat }}</h5>
         <div class="card-datatable table-responsive pt-0">
             <table id="listdata" class="table table-striped">
                 <thead>

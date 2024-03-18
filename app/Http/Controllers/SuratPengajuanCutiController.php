@@ -101,10 +101,13 @@ class SuratPengajuanCutiController extends Controller
 
         $data = SuratPengajuanCuti::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
+        $jenisSurat = 'Surat Pengajuan Cuti';
+
         return view('pages.riwayatsurat', [
             'data' => $data,
             $navbarView,
-            $sidebarView
+            $sidebarView,
+            'jenisSurat' => $jenisSurat
         ]);
     }
 
@@ -159,7 +162,7 @@ class SuratPengajuanCutiController extends Controller
         return redirect()->back();
     }
 
-    
+
     public function downloadSuratPengajuanCuti($file_path)
     {
         $file = storage_path('app/public/surat-pengajuan-cuti/' . $file_path);
