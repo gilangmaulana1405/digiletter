@@ -141,7 +141,7 @@
                 </td>
                 <td>:</td>
                 <td>
-                    <font size="3">{{ $data['tgl_lahir'] }}</font>
+                    <font size="3">{{ \Carbon\Carbon::parse($data['tgl_lahir'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
                 </td>
             </tr>
             <td>
@@ -190,13 +190,13 @@
                     <div class="container">
                         <br>
                         <br>
-                         <div class="left">
-                             @if (isset($ttdPimpinanDataSI) && $ttdPimpinanDataSI->isNotEmpty() && isset($ttdPimpinanDataSI[0]->ttd_image))
-                             <img src="{{ public_path('storage/ttd/terbaru/' . $ttdPimpinanDataSI[0]->ttd_image) }}" width="180" alt="">
-                             @else
-                             <img src="{{ public_path('storage/ttd/'. $defaultTtdData['ttd_image']) }}" width="180" alt="">
-                             @endif
-                         </div>
+                        <div class="left">
+                            @if (isset($ttdPimpinanDataSI) && $ttdPimpinanDataSI->isNotEmpty() && isset($ttdPimpinanDataSI[0]->ttd_image))
+                            <img src="{{ public_path('storage/ttd/terbaru/' . $ttdPimpinanDataSI[0]->ttd_image) }}" width="180" alt="">
+                            @else
+                            <img src="{{ public_path('storage/ttd/'. $defaultTtdData['ttd_image']) }}" width="180" alt="">
+                            @endif
+                        </div>
                     </div>
                     <br>
                     <br>

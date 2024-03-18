@@ -114,4 +114,16 @@ Route::middleware(['admin'])->group(function () {
     // change ttd
     Route::get('/admin/upload-ttd/', [AdminController::class, 'formchangeTtd'])->name('form.change.ttd');
     Route::post('/admin/upload-ttd/', [AdminController::class, 'changeTtdPimpinan'])->name('change.ttdpimpinan');
+    
+    // export excel
+    Route::get('/export-surat-izin-penelitian', [AdminController::class, 'exportSuratIzinPenelitian'])->name('export-surat-izin-penelitian');
+
+    Route::get('/export-surat-keterangan-aktif', [AdminController::class, 'exportSuratKeteranganAktif'])->name('export-surat-keterangan-aktif');
+
+    Route::get('/export-surat-keterangan-aktif-ortu-pns', [AdminController::class, 'exportSuratKeteranganAktifOrtuPns'])->name('export-surat-keterangan-aktif-ortu-pns');
+
+    Route::get('/export-surat-bebas-pustaka', [AdminController::class, 'exportSuratBebasPustaka'])->name('export-surat-bebas-pustaka');
+
+    Route::get('/export-surat-pengajuan-cuti', [AdminController::class, 'exportSuratPengajuanCuti'])->name('export-surat-pengajuan-cuti');
+    
 });

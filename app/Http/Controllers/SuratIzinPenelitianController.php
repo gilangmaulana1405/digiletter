@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use PDF;
-use PhpOffice\PhpWord\TemplateProcessor;
 use App\Models\User;
+use App\Models\TtdPimpinan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Models\SuratIzinPenelitian;
-use App\Models\TtdPimpinan;
 use App\Notifications\UserNotifcation;
 use App\Notifications\AdminNotification;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class SuratIzinPenelitianController extends Controller
 {
@@ -68,7 +67,7 @@ class SuratIzinPenelitianController extends Controller
             $templateProcessor->setValue('npm', $data->npm);
             $templateProcessor->setValue('prodi', $data->prodi);
             $templateProcessor->setValue('judul_penelitian', $data->judul_penelitian);
-             $templateProcessor->setValue('created_at',  \Carbon\Carbon::parse($data->created_at)->locale('id_ID')->isoFormat('D MMMM Y'));
+            $templateProcessor->setValue('created_at',  \Carbon\Carbon::parse($data->created_at)->locale('id_ID')->isoFormat('D MMMM Y'));
 
             $templateProcessor->saveAs($outputPath);
         } elseif ($data->lingkup === 'Eksternal') {
@@ -163,7 +162,7 @@ class SuratIzinPenelitianController extends Controller
 
         return redirect()->back()->with('success', 'Surat Izin Penelitian telah disetujui!');
     }
-    
+
     public function tidaksetujuSuratIzinPenelitian(Request $request, $id)
     {
         $SuratIzinPenelitian = SuratIzinPenelitian::findOrFail($id);

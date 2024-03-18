@@ -19,7 +19,20 @@ List Data Surat
     </div>
     <!-- Column Search -->
     <div class="card">
-        <h5 class="card-header">Pengajuan {{ $jenisSurat }}</h5>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Pengajuan {{ $jenisSurat }}</h5>
+            @if(request()->is('admin/listdata/suratizinpenelitian'))
+            <a href="{{ route('export-surat-izin-penelitian') }}" class="btn btn-success">Export Excel</a>
+            @elseif(request()->is('admin/listdata/suratketeranganaktif'))
+            <a href="{{ route('export-surat-keterangan-aktif') }}" class="btn btn-success">Export Excel</a>
+            @elseif(request()->is('admin/listdata/suratketeranganaktifortupns'))
+            <a href="{{ route('export-surat-keterangan-aktif-ortu-pns') }}" class="btn btn-success">Export Excel</a>
+            @elseif(request()->is('admin/listdata/suratbebaspustaka'))
+            <a href="{{ route('export-surat-bebas-pustaka') }}" class="btn btn-success">Export Excel</a>
+            @elseif(request()->is('admin/listdata/suratpengajuancuti'))
+            <a href="{{ route('export-surat-pengajuan-cuti') }}" class="btn btn-success">Export Excel</a>
+            @endif
+        </div>
         <div class="card-datatable table-responsive pt-0">
             <table id="listdata" class="table table-striped">
                 <thead>

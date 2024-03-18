@@ -16,9 +16,12 @@ use App\Models\SuratPengajuanCuti;
 use App\Models\SuratIzinPenelitian;
 use App\Models\SuratKeteranganAktif;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Exports\SuratIzinPenelitianExport;
+use App\Exports\SuratKeteranganAktifExport;
 use App\Models\SuratKeteranganAktifOrtuPns;
 
 class AdminController extends Controller
@@ -64,7 +67,7 @@ class AdminController extends Controller
             $item->judul_skripsi = ucfirst($item->judul_skripsi);
             return $item;
         });
-        
+
         $jenisSurat = 'Surat Izin Penelitian';
 
         return view('admin.pages.listdata', [
@@ -82,7 +85,7 @@ class AdminController extends Controller
 
         $data = SuratKeteranganAktif::orderBy('created_at', 'desc')->get();
 
-         $jenisSurat = 'Surat Keterangan Aktif Kuliah';
+        $jenisSurat = 'Surat Keterangan Aktif Kuliah';
 
         return view('admin.pages.listdata', [
             'data' => $data,
@@ -98,7 +101,7 @@ class AdminController extends Controller
 
         $data = SuratKeteranganAktifOrtuPns::orderBy('created_at', 'desc')->get();
 
-         $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
+        $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
 
         return view('admin.pages.listdata', [
             'data' => $data,
@@ -233,5 +236,21 @@ class AdminController extends Controller
         );
 
         return redirect()->back()->with('success', 'Tanda Tangan dan Nama Pimpinan pada Surat berhasil diubah.');
+    }
+
+    public function exportSuratIzinPenelitian()
+    {
+        $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
+        $filename = 'Export Surat Izin Penelitian_' . $tanggal . '.xlsx';
+
+        return Excel::download(new SuratIzinPenelitianExport, $filename);
+    }
+    
+    public function exportSuratKeteranganAktif()
+    {
+        $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
+        $filename = 'Export Surat Keterangan Aktif_' . $tanggal . '.xlsx';
+
+        return Excel::download(new SuratKeteranganAktifExport, $filename);
     }
 }
