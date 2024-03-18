@@ -91,29 +91,6 @@
      }
  });
 
- // select2 semester (romawi)
- $(document).ready(function () {
-     $('#select2IconsSemester').select2({
-         templateResult: formatOption,
-         templateSelection: formatOption,
-     });
-
-     // Fungsi untuk mengatur tampilan opsi dengan ikon
-     function formatOption(option) {
-         if (!option.id) {
-             return option.text;
-         }
-
-         var iconClass = $(option.element).data('icon');
-         if (iconClass) {
-             // Jika opsi memiliki data-icon, tambahkan ikon ke dalam teks opsi
-             return $('<span><i class="' + iconClass + '"></i> ' + option.text + '</span>');
-         }
-
-         return option.text;
-     }
- });
-
  // inputan
  document.addEventListener("DOMContentLoaded", function () {
      let inputNumeric = document.querySelectorAll('.numeric-input');
@@ -151,12 +128,6 @@
          });
      });
  });
-
- // reload halaman otomatis 2 menit
- function refreshPage() {
-     location.reload(true);
- }
- setInterval(refreshPage, 120000);
 
  // reset button img
  function resetFileInput() {

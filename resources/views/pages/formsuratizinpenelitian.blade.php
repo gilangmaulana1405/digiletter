@@ -60,28 +60,28 @@ Surat Izin Penelitian
                     <label class="form-label" for="basic-icon-default-company">Semester</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-numbers"></i></span>
-                        <input type="number" id="basic-icon-default-company" name="semester" class="form-control numeric-input" value="{{ $data->mahasiswa->semester }}" />
+                        <input type="number" id="basic-icon-default-company" name="semester" class="form-control numeric-input" value="{{ $data->mahasiswa->semester }}" required />
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Tujuan Surat</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-drag-drop"></i></span>
-                        <input type="text" class="form-control alphabet-input" name="tujuan_surat" id="basic-icon-default-fullname" placeholder="Cth: Kepala Dinas Perhubungan/HRD PT. Angin Ribut/Manajer Plaza Cafe" />
+                        <input type="text" class="form-control alphabet-input" name="tujuan_surat" id="basic-icon-default-fullname" placeholder="Cth: Kepala Dinas Perhubungan/HRD PT. Angin Ribut/Manajer Plaza Cafe" required />
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Tujuan Instansi</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-location"></i></span>
-                        <input type="text" class="form-control alphabet-input" name="tujuan_instansi" id="basic-icon-default-fullname" placeholder="Cth: Dinas Perhubungan/Plaza Cafe/PT. Angin Ribut" />
+                        <input type="text" class="form-control alphabet-input" name="tujuan_instansi" id="basic-icon-default-fullname" placeholder="Cth: Dinas Perhubungan/Plaza Cafe/PT. Angin Ribut" required />
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Domisili Instansi</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-map-pin"></i></span>
-                        <input type="text" class="form-control alphabet-input" name="domisili_instansi" id="basic-icon-default-fullname" placeholder="Cth: Kabupaten Karawang/ Kota Bekasi" />
+                        <input type="text" class="form-control alphabet-input" name="domisili_instansi" id="basic-icon-default-fullname" placeholder="Cth: Kabupaten Karawang/ Kota Bekasi" required />
                     </div>
                 </div>
                 <div class="mb-3">

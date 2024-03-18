@@ -97,7 +97,7 @@
             </tr>
         </table>
         <br>
-        <table border="0" width="400" cellpadding="0">
+        <table border="0" width="450" cellpadding="0" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Nama</font>
@@ -146,7 +146,7 @@
             </tr>
         </table>
         <br>
-        <table border="0" width="400">
+        <table border="0" width="450" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Nama</font>
@@ -204,7 +204,7 @@
         </table>
 
         <br>
-        <table border="0" width="400">
+        <table border="0" width="450" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Nama</font>
@@ -244,10 +244,10 @@
         </table>
         <br>
         <br>
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
-                    <font size="3">Adalah benar mahasiswa kami yang masih aktif pada tahun akademik 2024/2024. Apabila
+                    <font size="3">Adalah benar mahasiswa kami yang masih aktif pada tahun akademik {{ $data['tahun_akademik'] }}. Apabila
                         dikemudian hari surat pernyataan ini terdapat kesalahan yang mengakibatkan kerugian terhadap
                         Negara Republik Indonesia, maka kerugian tersebut menjadi tanggung jawab orang tua/wali
                         mahasiswa tersebut diatas.</font>
@@ -256,7 +256,7 @@
         </table>
         <br>
 
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Demikian Surat Keterangan ini kami buat dengan sesungguhnya, untuk dapat dipergunakan

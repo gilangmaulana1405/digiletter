@@ -35,6 +35,8 @@ class SuratPengajuanCutiController extends Controller
         $data->alamat = Str::title($request->input('alamat'));
         $data->no_hp = $request->input('no_hp');
         $data->alasan_cuti = Str::title($request->input('alasan_cuti'));
+        $data->periode = $request->input('periode');
+        $data->tahun_akademik = $request->input('tahun_akademik');
 
         $timestamp = now()->timestamp;
         $fileName = $timestamp . '_Surat_Pengajuan_Cuti_' . Str::title($data->nama_mhs) . '_' . $data->npm . '.docx';

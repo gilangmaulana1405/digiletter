@@ -20,7 +20,7 @@ List Data Surat
     <!-- Column Search -->
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Pengajuan {{ $jenisSurat }}</h5>
+            <h5 class="mb-0">Daftar {{ $jenisSurat }}</h5>
             @if(request()->is('admin/listdata/suratizinpenelitian'))
             <a href="{{ route('export-surat-izin-penelitian') }}" class="btn btn-success">Export Excel</a>
             @elseif(request()->is('admin/listdata/suratketeranganaktif'))
@@ -234,3 +234,12 @@ List Data Surat
 
 
 @endsection
+
+<script>
+    // reload halaman otomatis setiap 2 jam
+    function refreshPage() {
+        location.reload(true);
+    }
+    setInterval(refreshPage, 7200000); // 2 jam = 7200000 milidetik
+
+</script>

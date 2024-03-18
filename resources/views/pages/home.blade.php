@@ -84,4 +84,14 @@ Home
     </div>
 </div>
 
+
 @endsection
+
+<script>
+    // reload halaman otomatis setiap 2 jam
+    function refreshPage() {
+        location.reload(true);
+    }
+    setInterval(refreshPage, 7200000); // 2 jam = 7200000 milidetik
+
+</script>

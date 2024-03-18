@@ -98,7 +98,7 @@
 
         <br>
 
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align: justify;">
             <tr>
                 <td>
                     <font size="3">Nama</font>
@@ -154,18 +154,18 @@
         </table>
 
         <br>
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align: justify;">
             <tr>
                 <td>
                     <font size="3">Adalah benar mahasiswa Program Studi S1 - {{ $data['prodi'] }} Fakultas Ilmu Komputer
                         Universitas Singaperbangsa Karawang, yang bersangkutan aktif mengikuti perkuliahan pada tahun
-                        akademik 2022/2023 duduk pada Semester {{ $data['semester'] }}.</font>
+                        akademik {{ $data['tahun_akademik'] }} duduk pada Semester {{ $data['semester'] }}.</font>
                 </td>
             </tr>
         </table>
         <br>
 
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align: justify;">
             <tr>
                 <td>
                     <font size="3">Demikian Surat Keterangan ini kami buat dengan sebenarnya, untuk dipergunakan

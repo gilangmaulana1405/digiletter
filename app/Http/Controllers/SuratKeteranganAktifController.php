@@ -34,6 +34,8 @@ class SuratKeteranganAktifController extends Controller
         $data->semester = $request->input('semester');
         $data->tgl_lahir = $request->input('tgl_lahir');
         $data->alamat = Str::title($request->input('alamat'));
+        $data->periode = $request->input('periode');
+        $data->tahun_akademik = $request->input('tahun_akademik');
 
         $timestamp = now()->timestamp;
         $fileName = $timestamp . '_Surat_Keterangan_Aktif_Kuliah_' . Str::title($data->nama_mhs) . '_' . $data->npm . '.pdf';

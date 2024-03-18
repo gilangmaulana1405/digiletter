@@ -50,7 +50,7 @@ Surat Keterangan Aktif Ortu PNS
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-company">Semester</label>
                     <div class="input-group input-group-merge">
-                        <select name="semester" id="select2IconsSemester" class="select2-icons form-select">
+                        <select name="semester" class="select2-icons form-select">
                             <option value="I (Satu)" data-icon="ti ti-tallymarks">I (Satu)</option>
                             <option value="II (Dua)" data-icon="ti ti-tallymarks">II (Dua)</option>
                             <option value="III (Tiga)" data-icon="ti ti-tallymarks">III (Tiga)</option>
@@ -61,6 +61,22 @@ Surat Keterangan Aktif Ortu PNS
                             <option value="VIII (Delapan)" data-icon="ti ti-tallymarks">VIII (Delapan)</option>
                             <option value="X (Sepuluh)" data-icon="ti ti-tallymarks">X (Sepuluh)</option>
                         </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Periode</label>
+                    <div class="input-group input-group-merge">
+                        <select name="periode" class="select2-icons form-select">
+                            <option value="Gasal">Gasal</option>
+                            <option value="Genap">Genap</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Tahun Akademik</label>
+                    <div class="input-group input-group-merge">
+                        <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-album"></i></span>
+                        <input type="text" id="basic-icon-default-company" name="tahun_akademik" class="form-control" placeholder="Cth: 2023/2024" required />
                     </div>
                 </div>
                 <div class="mb-3">

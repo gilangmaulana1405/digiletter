@@ -119,17 +119,17 @@
 
         <br>
 
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Dipermaklumkan dengan hormat, sehubungan dengan Penelitian Skripsi yang harus
-                        dilaksanakan <br> di luar kampus Fakultas Ilmu Komputer Universitas Singaperbangsa Karawang, kami mohon bagi mahasiswa di bawah ini :</font>
+                        dilaksanakan di luar kampus Fakultas Ilmu Komputer Universitas Singaperbangsa Karawang, kami mohon bagi mahasiswa di bawah ini :</font>
                 </td>
             </tr>
         </table>
 
         <br>
-        <table border="0" width="400">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Nama</font>
@@ -158,7 +158,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width="170">
                     <font size="3">Jenjang Pendidikan</font>
                 </td>
                 <td>:</td>
@@ -178,7 +178,7 @@
         </table>
 
         <br>
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Mahasiswa tersebut bermaksud melakukan penelitian dan Permohonan Data yang
@@ -191,7 +191,7 @@
         </table>
 
         <br>
-        <table border="0" width="500">
+        <table border="0" width="500" style="text-align:justify;">
             <tr>
                 <td>
                     <font size="3">Demikian disampaikan, atas perhatian dan perkenannya kami ucapkan terima kasih.

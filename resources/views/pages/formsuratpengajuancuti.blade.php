@@ -48,6 +48,22 @@ Surat Pengajuan Cuti
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Periode</label>
+                    <div class="input-group input-group-merge">
+                        <select name="periode" class="select2-icons form-select">
+                            <option value="Gasal">Gasal</option>
+                            <option value="Genap">Genap</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Tahun Akademik</label>
+                    <div class="input-group input-group-merge">
+                        <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-album"></i></span>
+                        <input type="text" id="basic-icon-default-company" name="tahun_akademik" class="form-control" placeholder="Cth: 2023/2024" required />
+                    </div>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Alamat</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-message2" class="input-group-text"><i class="ti ti-map-pin"></i></span>

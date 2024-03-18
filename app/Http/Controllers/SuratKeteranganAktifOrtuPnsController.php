@@ -35,6 +35,8 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
         $data->prodi = $request->input('prodi');
         $data->semester = $request->input('semester');
         $data->alamat = Str::title($request->input('alamat'));
+        $data->periode = $request->input('periode');
+        $data->tahun_akademik = $request->input('tahun_akademik');
 
         // ortu
         $data->nama_ortu = Str::title($request->input('nama_ortu'));

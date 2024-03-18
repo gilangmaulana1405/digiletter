@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('no_hp');
             $table->text('alasan_cuti');
+            $table->enum('periode',['Gasal', 'Genap']);
+            $table->string('tahun_akademik');
             $table->string('jenis_surat')->default('Surat Pengajuan Cuti');
             $table->string('file_path')->nullable();
             $table->string('keterangan')->nullable()->default(null);
