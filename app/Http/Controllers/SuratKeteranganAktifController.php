@@ -32,8 +32,14 @@ class SuratKeteranganAktifController extends Controller
     {
         $buktiPembayaran = $request->file('bukti_pembayaran');
         $request->validate([
-            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+        ], [
+            'bukti_pembayaran.max' => 'Ukuran gambar tidak boleh melebihi 500 KB.',
         ]);
+
+        if ($buktiPembayaran->getSize() > 500 * 1024) {
+            return redirect()->back()->withErrors(['bukti_pembayaran' => 'Ukuran gambar tidak boleh melebihi 500 KB.'])->withInput();
+        }
 
         $data = new SuratKeteranganAktif();
         $data->nama_mhs = Str::title($request->input('nama_mhs'));

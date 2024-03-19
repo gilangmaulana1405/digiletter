@@ -47,11 +47,12 @@ class UserController extends Controller
             'semester' => 'required|numeric',
             'domisili' => 'required',
             'no_hp' => 'required|numeric',
-            'foto' => 'image|mimes:jpg,png,svg|max:1024',
+            'foto' => 'image|mimes:jpg,png,svg|max:500', // Menambahkan batasan ukuran file
         ], [
             'semester.required' => 'Semester harus diisi',
             'domisili.required' => 'Domisili harus diisi',
             'no_hp.required' => 'Nomor HP harus diisi',
+            'foto.max' => 'Ukuran gambar tidak boleh melebihi 500 KB.'
         ]);
 
         // Memeriksa apakah ada kolom yang belum diisi
@@ -63,13 +64,20 @@ class UserController extends Controller
         }
 
         // Upload gambar baru
-        $file = $request->file('foto');
-        $namaFile = null;
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
 
-        if ($file) {
+            // Memeriksa ukuran file
+            if ($file->getSize() > 500 * 1024) { // Ukuran dalam byte, 500 KB = 500 * 1024 byte
+                return redirect()->route('user.profile', ['id' => $id])->with('error', 'Ukuran gambar tidak boleh melebihi 500 KB.');
+            }
+
+            // Proses upload jika ukuran sesuai
             $npmMahasiswa = auth()->user()->npm;
             $namaFile = auth()->user()->name . '-' . $npmMahasiswa . '-' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/foto-mahasiswa', $namaFile);
+        } else {
+            $namaFile = null;
         }
 
         // Ambil foto sebelumnya
@@ -93,6 +101,7 @@ class UserController extends Controller
 
         return redirect()->route('user.profile',  ['id' => $id])->with('success', 'Data diri telah berhasil diubah!');
     }
+
 
     public function settingAccount($id)
     {

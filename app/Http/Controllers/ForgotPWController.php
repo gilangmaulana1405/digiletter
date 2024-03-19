@@ -44,7 +44,8 @@ class ForgotPWController extends Controller
             'password' => 'required|min:6|confirmed',
         ],[
             'password.required' => 'Password tidak boleh kosong.',
-            'password.confirmed' => 'Password harus sesuai.'
+            'password.confirmed' => 'Password harus sesuai.',
+            'password.min' => 'Password harus lebih dari 6 karakter/angka.',
         ]);
 
         $status = Password::reset(
