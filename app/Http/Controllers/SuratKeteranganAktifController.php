@@ -17,12 +17,15 @@ class SuratKeteranganAktifController extends Controller
 {
     public function create($id)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-        return view('pages.formsuratketeranganaktif', [$navbarView, $sidebarView, 'data' => $data]);
+            return view('pages.formsuratketeranganaktif', [$navbarView, $sidebarView, 'data' => $data, 'userAuth']);
+        }
     }
 
     public function store(Request $request)
@@ -129,19 +132,23 @@ class SuratKeteranganAktifController extends Controller
 
     public function riwayatSuratKeteranganAktif()
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = SuratKeteranganAktif::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+            $data = SuratKeteranganAktif::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
-        $jenisSurat = 'Surat Keterangan Aktif Kuliah';
+            $jenisSurat = 'Surat Keterangan Aktif Kuliah';
 
-        return view('pages.riwayatsurat', [
-            'data' => $data,
-            $navbarView,
-            $sidebarView,
-            'jenisSurat' => $jenisSurat
-        ]);
+            return view('pages.riwayatsurat', [
+                'data' => $data,
+                $navbarView,
+                $sidebarView,
+                'jenisSurat' => $jenisSurat,
+                'userAuth'
+            ]);
+        }
     }
 
     public function setujuiSuratKeteranganAktif(Request $request, $id)

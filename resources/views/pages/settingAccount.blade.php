@@ -55,15 +55,13 @@ User Settings
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="{{ asset('storage/foto-mahasiswa/' . $user->mahasiswa->foto) ?? '' }}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
                         <div class="button-wrapper">
-                            <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
-                                <span class="d-none d-sm-block">Upload new photo</span>
-                                <i class="ti ti-upload d-block d-sm-none"></i>
-                                <input type="file" name="foto" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
-                            </label>
-                            <button type="button" class="btn btn-label-secondary account-image-reset mb-3" onclick="resetFileInput()">
-                                <i class="ti ti-refresh-dot d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Reset</span>
-                            </button>
+                            <span class="d-none d-sm-block">Upload new photo</span>
+                            <i class="ti ti-upload d-block d-sm-none"></i>
+                            <input type="file" class="form-control" name="foto" id="inputGroupFile02" onchange="previewFile()" required>
+                            <div id="preview-container" style="display: none; margin-top: 20px;">
+                                <img id="preview-image" alt="Preview Image" style="max-width: 100%; max-height: 200px;">
+                                <button id="remove-btn" onclick="removeFile()" style="display: none; margin-top: 10px;">Remove File</button>
+                            </div>
                             <div class="text-muted">
                                 Mengizinkan format JPG, SVG, atau PNG. Ukuran maksimal 1MB.
                             </div>

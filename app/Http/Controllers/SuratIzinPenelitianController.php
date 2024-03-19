@@ -16,12 +16,15 @@ class SuratIzinPenelitianController extends Controller
 {
     public function create($id)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-        return view('pages.formsuratizinpenelitian', [$navbarView, $sidebarView, 'data' => $data]);
+            return view('pages.formsuratizinpenelitian', [$navbarView, $sidebarView, 'data' => $data, 'userAuth']);
+        }
     }
 
     public function store(Request $request)
@@ -185,26 +188,30 @@ class SuratIzinPenelitianController extends Controller
 
     public function riwayatSuratIzinPenelitian(Request $request)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = SuratIzinPenelitian::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+            $data = SuratIzinPenelitian::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
-        $jenisSurat = 'Surat Izin Penelitian';
+            $jenisSurat = 'Surat Izin Penelitian';
 
-        // Menggunakan ucfirst untuk mengubah huruf pertama menjadi besar
-        $formattedData = $data->map(function ($item) {
-            $item->nama_mhs = ucfirst($item->nama_mhs);
-            $item->judul_penelitian = ucfirst($item->judul_penelitian);
-            return $item;
-        });
+            // Menggunakan ucfirst untuk mengubah huruf pertama menjadi besar
+            $formattedData = $data->map(function ($item) {
+                $item->nama_mhs = ucfirst($item->nama_mhs);
+                $item->judul_penelitian = ucfirst($item->judul_penelitian);
+                return $item;
+            });
 
-        return view('pages.riwayatsurat', [
-            'data' => $formattedData,
-            $navbarView,
-            $sidebarView,
-            'jenisSurat' => $jenisSurat
-        ]);
+            return view('pages.riwayatsurat', [
+                'data' => $formattedData,
+                $navbarView,
+                $sidebarView,
+                'jenisSurat' => $jenisSurat,
+                'userAuth'
+            ]);
+        }
     }
 
     public function downloadSuratIzinPenelitian($file_path)

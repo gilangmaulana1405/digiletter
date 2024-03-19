@@ -27,7 +27,7 @@ Register
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama lengkap" autofocus />
+                        <input type="text" class="form-control alphabet-input" id="name" name="name" placeholder="Masukkan nama lengkap" autofocus />
                     </div>
                     <div class="mb-3">
                         <label for="npm" class="form-label">NPM</label>

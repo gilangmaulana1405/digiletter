@@ -17,12 +17,15 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
 {
     public function create($id)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-        return view('pages.formsuratketeranganaktifortupns', [$navbarView, $sidebarView, 'data' => $data]);
+            return view('pages.formsuratketeranganaktifortupns', [$navbarView, $sidebarView, 'data' => $data, 'userAuth']);
+        }
     }
 
     public function store(Request $request)
@@ -56,7 +59,7 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
         $data->file_path = $filePath;
         $data->jenis_surat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
 
-         // img bukti pembayaran
+        // img bukti pembayaran
         $imageName = $timestamp . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
         $buktiPembayaran->storeAs('public/bukti-pembayaran', $imageName);
         $data->bukti_pembayaran = $imageName;
@@ -120,19 +123,22 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
 
     public function riwayatSuratKeteranganAktifOrtuPns()
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = SuratKeteranganAktifOrtuPns::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+            $data = SuratKeteranganAktifOrtuPns::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
-         $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
+            $jenisSurat = 'Surat Keterangan Aktif Kuliah Ortu PNS';
 
-        return view('pages.riwayatsurat', [
-            'data' => $data,
-            $navbarView,
-            $sidebarView,
-            'jenisSurat' => $jenisSurat
-        ]);
+            return view('pages.riwayatsurat', [
+                'data' => $data,
+                $navbarView,
+                $sidebarView,
+                'jenisSurat' => $jenisSurat
+            ]);
+        }
     }
 
     public function setujuiSuratKeteranganAktifOrtuPns(Request $request, $id)
@@ -186,7 +192,7 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
         return redirect()->back();
     }
 
-    
+
     public function downloadSuratKeteranganAktifOrtuPns($file_path)
     {
         $file = storage_path('app/public/surat-keterangan-aktif-ortu-pns/' . $file_path);

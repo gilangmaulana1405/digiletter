@@ -18,12 +18,15 @@ class SuratBebasPustakaController extends Controller
 
     public function create($id)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-        return view('pages.formsuratbebaspustaka', [$navbarView, $sidebarView, 'data' => $data]);
+            return view('pages.formsuratbebaspustaka', [$navbarView, $sidebarView, 'data' => $data, 'userAuth']);
+        }
     }
 
     public function store(Request $request)
@@ -114,19 +117,22 @@ class SuratBebasPustakaController extends Controller
 
     public function riwayatSuratBebasPustaka()
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = SuratBebasPustaka::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+            $data = SuratBebasPustaka::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
-        $jenisSurat = 'Surat Bebas Pustaka';
+            $jenisSurat = 'Surat Bebas Pustaka';
 
-        return view('pages.riwayatsurat', [
-            'data' => $data,
-            $navbarView,
-            $sidebarView,
-            'jenisSurat' => $jenisSurat
-        ]);
+            return view('pages.riwayatsurat', [
+                'data' => $data,
+                $navbarView,
+                $sidebarView,
+                'jenisSurat' => $jenisSurat
+            ]);
+        }
     }
 
     public function setujuiSuratBebasPustaka(Request $request, $id)
@@ -180,7 +186,7 @@ class SuratBebasPustakaController extends Controller
         return redirect()->back();
     }
 
-    
+
     public function downloadSuratBebasPustaka($file_path)
     {
         $file = storage_path('app/public/surat-bebas-pustaka/' . $file_path);

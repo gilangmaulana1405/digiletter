@@ -59,7 +59,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/riwayat-surat-pengajuan-cuti', [SuratPengajuanCutiController::class, 'riwayatSuratPengajuanCuti'])->name('riwayat-surat-pengajuan-cuti');
 
     // download surat
-    // Route::get('/download-surat/{file_path}', [SuratIzinPenelitianController::class, 'downloadSuratIzinPenelitian'])->name('download-surat');
     Route::get('/download-surat/{folders}/{file_path}', [UserController::class, 'downloadSurat'])->name('download-surat');
 
     Route::get('/markasreadapprove/{id}', [UserController::class, 'markAsReadApprove'])->name('markasreadapprove');

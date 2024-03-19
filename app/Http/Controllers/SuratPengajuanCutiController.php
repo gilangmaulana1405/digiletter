@@ -18,12 +18,15 @@ class SuratPengajuanCutiController extends Controller
 {
     public function create($id)
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-        return view('pages.formsuratpengajuancuti', [$navbarView, $sidebarView, 'data' => $data]);
+            return view('pages.formsuratpengajuancuti', [$navbarView, $sidebarView, 'data' => $data, 'userAuth']);
+        }
     }
 
     public function store(Request $request)
@@ -50,7 +53,7 @@ class SuratPengajuanCutiController extends Controller
         $data->file_path = $filePath;
         $data->jenis_surat = 'Surat Pengajuan Cuti';
 
-         // img bukti pembayaran
+        // img bukti pembayaran
         $imageName = $timestamp . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
         $buktiPembayaran->storeAs('public/bukti-pembayaran', $imageName);
         $data->bukti_pembayaran = $imageName;
@@ -108,19 +111,22 @@ class SuratPengajuanCutiController extends Controller
 
     public function riwayatSuratPengajuanCuti()
     {
-        $navbarView = view('layouts/navbar');
-        $sidebarView = view('layouts/sidebar');
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
 
-        $data = SuratPengajuanCuti::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
+            $data = SuratPengajuanCuti::orderBy('created_at', 'desc')->where('nama_mhs', auth()->user()->name)->get();
 
-        $jenisSurat = 'Surat Pengajuan Cuti';
+            $jenisSurat = 'Surat Pengajuan Cuti';
 
-        return view('pages.riwayatsurat', [
-            'data' => $data,
-            $navbarView,
-            $sidebarView,
-            'jenisSurat' => $jenisSurat
-        ]);
+            return view('pages.riwayatsurat', [
+                'data' => $data,
+                $navbarView,
+                $sidebarView,
+                'jenisSurat' => $jenisSurat
+            ]);
+        }
     }
 
     public function setujuiSuratPengajuanCuti(Request $request, $id)
