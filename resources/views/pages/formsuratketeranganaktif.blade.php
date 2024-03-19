@@ -22,7 +22,7 @@ Surat Keterangan Aktif
             </div>
             @endif
 
-            <form method="post" action="{{ route('suratketeranganaktif.store') }}" id="formSuratKeteranganAktif">
+            <form method="post" action="{{ route('suratketeranganaktif.store') }}" id="formSuratKeteranganAktif" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Nama Mahasiswa</label>
@@ -93,6 +93,19 @@ Surat Keterangan Aktif
                         <textarea id="basic-icon-default-message" name="alamat" class="form-control" placeholder="" required></textarea>
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Upload Bukti Pembayaran</label>
+                    <div class="input-group input-group-merge">
+                        <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-file-upload"></i></span>
+                        <input type="file" class="form-control" name="bukti_pembayaran" id="inputGroupFile02" onchange="previewFile()" required>
+                    </div>
+                    <div id="preview-container" style="display: none; margin-top: 20px;">
+                        <img id="preview-image" alt="Preview Image" style="max-width: 100%; max-height: 200px;">
+                        <button id="remove-btn" onclick="removeFile()" style="display: none; margin-top: 10px;">Remove File</button>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </div>

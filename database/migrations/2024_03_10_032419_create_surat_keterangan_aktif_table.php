@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('jenis_surat')->default('Surat Keterangan Aktif Kuliah');
             $table->string('file_path')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
             $table->timestamps();

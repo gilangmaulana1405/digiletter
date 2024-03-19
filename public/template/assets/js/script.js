@@ -129,6 +129,38 @@
      });
  });
 
+ //  upload preview image
+ function previewFile() {
+     var fileInput = document.getElementById('inputGroupFile02');
+     var previewContainer = document.getElementById('preview-container');
+     var previewImage = document.getElementById('preview-image');
+     var removeBtn = document.getElementById('remove-btn');
+
+     var file = fileInput.files[0];
+
+     if (file) {
+         var reader = new FileReader();
+
+         reader.onload = function (e) {
+             previewImage.src = e.target.result;
+             previewContainer.style.display = 'block';
+             removeBtn.style.display = 'block';
+         };
+
+         reader.readAsDataURL(file);
+     }
+ }
+
+ function removeFile() {
+     var fileInput = document.getElementById('inputGroupFile02');
+     var previewContainer = document.getElementById('preview-container');
+     var removeBtn = document.getElementById('remove-btn');
+
+     fileInput.value = ''; // Clear the file input
+     previewContainer.style.display = 'none';
+     removeBtn.style.display = 'none';
+ }
+
  // reset button img
  function resetFileInput() {
      // Reset nilai input file dengan mengganti nilai dengan dirinya sendiri

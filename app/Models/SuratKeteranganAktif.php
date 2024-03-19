@@ -9,7 +9,7 @@ class SuratKeteranganAktif extends Model
 {
     use HasFactory;
     protected $table = 'surat_keterangan_aktif';
-    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi', 'semester', 'tgl_lahir', 'alamat', 'periode', 'tahun_akademik', 'updated_at'];
+    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi', 'semester', 'tgl_lahir', 'alamat', 'periode', 'tahun_akademik', 'bukti_pembayaran', 'updated_at'];
 
     public function user()
     {

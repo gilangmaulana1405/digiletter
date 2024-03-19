@@ -12,7 +12,11 @@ List Data Surat
         <div class="col-md-5">
             <div class="alert alert-info position-relative" role="alert">
                 <h4 class="alert-heading">Informasi!</h4>
-                <p>Jangan lupa ketika klik tombol preview (icon mata warna biru), matikan internet download manager (idm) agar dapat preview surat.</p>
+                <ul>
+                    <li>Jangan lupa ketika klik tombol preview (icon mata warna biru), matikan internet download manager
+                        (idm) agar dapat preview surat.</li>
+                    <li>Disarankan ukuran layar 90%.</li>
+                </ul>
                 <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
@@ -43,7 +47,8 @@ List Data Surat
                         <th>Nama Mahasiswa</th>
                         <th>NPM</th>
                         <th>Prodi</th>
-                        <th width="140">Aktivitas</th>
+                        <th>Lampiran</th>
+                        <th style="width:200px;">Aktivitas</th>
                         <th>Tanggal Approve</th>
                         <th>Status</th>
                     </tr>
@@ -57,6 +62,13 @@ List Data Surat
                         <td>{{ $d->nama_mhs }}</td>
                         <td>{{ $d->npm }}</td>
                         <td>{{ $d->prodi }}</td>
+                        <td>
+                            @if($d->bukti_pembayaran)
+                            <img src="{{ asset('storage/bukti-pembayaran/' . $d->bukti_pembayaran) }}" class="img-thumbnail" alt="Bukti Pembayaran" style="max-width: 80px;" data-bs-toggle="modal" data-bs-target="#gambarModalBuktiPembayaran" onclick="showModalBuktiPembayaran('{{ asset('storage/bukti-pembayaran/' . $d->bukti_pembayaran) }}')">
+                            @else
+                            <p class="text-center">-</p>
+                            @endif
+                        </td>
                         <td>
                             @php
                             if ($d->jenis_surat == 'Surat Izin Penelitian') {
@@ -224,6 +236,36 @@ List Data Surat
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal Bukti Pembayaran -->
+                    <div class="modal fade" id="gambarModalBuktiPembayaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Gambar Bukti Pembayaran</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <img src="" id="modalImageBuktiPembayaran" class="img-fluid" alt="Bukti Pembayaran" style="max-height: 100%; width: 100%;">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item active" aria-current="true">Data Mahasiswa</li>
+                                                    <li class="list-group-item">Nama : {{ $d->nama_mhs }}</li>
+                                                    <li class="list-group-item">NPM : {{ $d->npm }}</li>
+                                                    <li class="list-group-item">Prodi : {{ $d->prodi }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     @endforeach
                 </tbody>
             </table>
@@ -231,9 +273,6 @@ List Data Surat
     </div>
     <!--/ Column Search -->
 </div>
-
-
-@endsection
 
 <script>
     // reload halaman otomatis setiap 2 jam
@@ -243,3 +282,12 @@ List Data Surat
     setInterval(refreshPage, 7200000); // 2 jam = 7200000 milidetik
 
 </script>
+
+<script>
+    function showModalBuktiPembayaran(imageUrl) {
+        document.getElementById('modalImageBuktiPembayaran').src = imageUrl;
+    }
+
+</script>
+
+@endsection

@@ -27,6 +27,11 @@ class SuratKeteranganAktifController extends Controller
 
     public function store(Request $request)
     {
+        $buktiPembayaran = $request->file('bukti_pembayaran');
+        $request->validate([
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
         $data = new SuratKeteranganAktif();
         $data->nama_mhs = Str::title($request->input('nama_mhs'));
         $data->npm = $request->input('npm');
@@ -43,6 +48,11 @@ class SuratKeteranganAktifController extends Controller
 
         $data->file_path = $filePath;
         $data->jenis_surat = 'Surat Keterangan Aktif Kuliah';
+
+        // img bukti pembayaran
+        $imageName = time() . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
+        $buktiPembayaran->storeAs('public/bukti-pembayaran', $imageName);
+        $data->bukti_pembayaran = $imageName;
 
         $data->save();
 
@@ -63,6 +73,7 @@ class SuratKeteranganAktifController extends Controller
 
         return redirect()->back()->with('success', 'Surat Keterangan Aktif telah dibuat. Periksa menu Riwayat Surat untuk melihat file surat!');
     }
+
 
     private function createPdf($data)
     {
