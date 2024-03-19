@@ -3,16 +3,16 @@
 namespace App\Exports;
 
 use Illuminate\Support\Carbon;
-use App\Models\SuratKeteranganAktif;
+use App\Models\SuratBebasPustaka;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class SuratKeteranganAktifExport implements FromCollection, WithHeadings, WithMapping
+class SuratBebasPustakaExport implements FromCollection, WithHeadings, WithMapping
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
 
     public function headings(): array
     {
@@ -21,41 +21,31 @@ class SuratKeteranganAktifExport implements FromCollection, WithHeadings, WithMa
             'Nomor Surat',
             'Nama Mahasiswa',
             'NPM',
-            'Semester',
             'Prodi',
-            'Tanggal Lahir',
-            'Alamat',
             'Jenis Surat',
-            'Periode',
-            'Tahun Akademik',
             'Tanggal Approve',
             'Keterangan',
             'Status',
         ];
     }
 
-     public function map($surat): array
+    public function map($surat): array
     {
         return [
             Carbon::parse($surat->created_at)->translatedFormat('j F Y'),
             $surat->nomor_surat,
             $surat->nama_mhs,
             "'" . $surat->npm,
-            $surat->semester,
             $surat->prodi,
-            $surat->tgl_lahir,
-            $surat->alamat,
             $surat->jenis_surat,
-            $surat->periode,
-            $surat->tahun_akademik,
             Carbon::parse($surat->updated_at)->translatedFormat('j F Y'),
             $surat->keterangan,
             $surat->status,
         ];
     }
-    
+
     public function collection()
     {
-        return SuratKeteranganAktif::select('created_at','nomor_surat','nama_mhs', 'npm', 'semester','prodi', 'tgl_lahir', 'alamat', 'jenis_surat', 'periode','tahun_akademik','updated_at','keterangan', 'status')->get();
+        return SuratBebasPustaka::select('created_at', 'nomor_surat', 'nama_mhs', 'npm', 'prodi',  'jenis_surat', 'updated_at', 'keterangan', 'status')->get();
     }
 }

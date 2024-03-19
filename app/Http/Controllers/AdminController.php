@@ -11,6 +11,7 @@ use App\Models\TtdPimpinan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Events\UserDataInput;
+use App\Exports\SuratBebasPustakaExport;
 use App\Models\SuratBebasPustaka;
 use App\Models\SuratPengajuanCuti;
 use App\Models\SuratIzinPenelitian;
@@ -23,6 +24,8 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Exports\SuratIzinPenelitianExport;
 use App\Exports\SuratKeteranganAktifExport;
 use App\Models\SuratKeteranganAktifOrtuPns;
+use App\Exports\SuratKeteranganAktifOrtuPnsExport;
+use App\Exports\SuratPengajuanCutiExport;
 
 class AdminController extends Controller
 {
@@ -252,5 +255,28 @@ class AdminController extends Controller
         $filename = 'Export Surat Keterangan Aktif_' . $tanggal . '.xlsx';
 
         return Excel::download(new SuratKeteranganAktifExport, $filename);
+    }
+
+    public function exportSuratKeteranganAktifOrtuPns()
+    {
+        $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
+        $filename = 'Export Surat Keterangan Aktif Ortu Pns_' . $tanggal . '.xlsx';
+
+        return Excel::download(new SuratKeteranganAktifOrtuPnsExport, $filename);
+    }
+
+    public function exportSuratBebasPustaka()
+    {
+        $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
+        $filename = 'Export Surat Bebas Pustaka_' . $tanggal . '.xlsx';
+
+        return Excel::download(new SuratBebasPustakaExport, $filename);
+    }
+    public function exportSuratPengajuanCuti()
+    {
+        $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
+        $filename = 'Export Surat Pengajuan Cuti_' . $tanggal . '.xlsx';
+
+        return Excel::download(new SuratPengajuanCutiExport, $filename);
     }
 }
