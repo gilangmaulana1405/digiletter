@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('tahun_akademik');
             $table->string('jenis_surat')->default('Surat Pengajuan Cuti');
             $table->string('file_path')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
             $table->timestamps();

@@ -27,11 +27,11 @@ return new class extends Migration
             $table->string('jabatan_ortu');
             $table->string('instansi');
 
-
             $table->enum('periode',['Gasal', 'Genap']);
             $table->string('tahun_akademik');
             $table->string('jenis_surat')->default('Surat Keterangan Aktif Kuliah Ortu PNS');
             $table->string('file_path')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
             $table->timestamps();

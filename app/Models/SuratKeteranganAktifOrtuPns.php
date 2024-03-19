@@ -9,7 +9,7 @@ class SuratKeteranganAktifOrtuPns extends Model
 {
     use HasFactory;
     protected $table = 'surat_keterangan_aktif_ortu_pns';
-    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi', 'semester', 'alamat','nama_ortu', 'nomor_induk_ortu', 'jabatan_ortu', 'instansi', 'periode', 'tahun_akademik','updated_at'];
+    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi', 'semester', 'alamat', 'nama_ortu', 'nomor_induk_ortu', 'jabatan_ortu', 'instansi', 'periode', 'tahun_akademik', 'bukti_pembayaran', 'updated_at'];
 
     public function user()
     {

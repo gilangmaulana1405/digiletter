@@ -28,6 +28,11 @@ class SuratPengajuanCutiController extends Controller
 
     public function store(Request $request)
     {
+        $buktiPembayaran = $request->file('bukti_pembayaran');
+        $request->validate([
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
         $data = new SuratPengajuanCuti();
         $data->nama_mhs = Str::title($request->input('nama_mhs'));
         $data->npm = $request->input('npm');
@@ -44,6 +49,11 @@ class SuratPengajuanCutiController extends Controller
 
         $data->file_path = $filePath;
         $data->jenis_surat = 'Surat Pengajuan Cuti';
+
+         // img bukti pembayaran
+        $imageName = $timestamp . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
+        $buktiPembayaran->storeAs('public/bukti-pembayaran', $imageName);
+        $data->bukti_pembayaran = $imageName;
 
         $data->save();
 

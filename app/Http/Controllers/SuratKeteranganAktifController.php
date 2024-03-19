@@ -50,7 +50,7 @@ class SuratKeteranganAktifController extends Controller
         $data->jenis_surat = 'Surat Keterangan Aktif Kuliah';
 
         // img bukti pembayaran
-        $imageName = time() . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
+        $imageName = $timestamp . '_' . 'ukt' . '_' . $data->nama_mhs . '_' . $data->npm . '.' . $buktiPembayaran->extension();
         $buktiPembayaran->storeAs('public/bukti-pembayaran', $imageName);
         $data->bukti_pembayaran = $imageName;
 

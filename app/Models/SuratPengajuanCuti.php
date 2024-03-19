@@ -10,7 +10,7 @@ class SuratPengajuanCuti extends Model
     use HasFactory;
     
     protected $table = 'surat_pengajuan_cuti';
-    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi','alamat','no_hp', 'alasan_cuti', 'periode', 'tahun_akademik', 'created_at', 'updated_at'];
+    protected $fillable = ['nomor_surat', 'nama_mhs', 'npm', 'prodi','alamat','no_hp', 'alasan_cuti', 'periode', 'tahun_akademik', 'bukti_pembayaran', 'created_at', 'updated_at'];
 
     public function user()
     {
