@@ -61,7 +61,11 @@ class SuratIzinPenelitianController extends Controller
             ]));
         }
 
+        // penyimpanan local
         $outputPath = storage_path('app\\public\\surat-izin-penelitian\\' . $filePath);
+
+        // penyimpanan hosting di cpanel digilett
+        // $outputPath = '/home/digilett/public_html/storage/surat-izin-penelitian/' . $filePath;
 
         if ($data->lingkup === 'Internal') {
             // pembuatan docx

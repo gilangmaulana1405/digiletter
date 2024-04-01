@@ -86,7 +86,7 @@ Riwayat Surat
 
                             @if($d->status == 'disetujui')
                             <a href="{{ route('download-surat', ['folders' => $folder, 'file_path' => $d->file_path]) }}" class="badge bg-info rounded-pill me-2">
-                                Download
+                                <i class="ti ti-download"></i> Download
                             </a>
                             @elseif($d->status == '')
                             <span class="badge rounded-pill bg-warning">Pending</span>

@@ -74,7 +74,7 @@ Surat Pengajuan Cuti
                     <label class="form-label" for="basic-icon-default-company">No HP</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-numbers"></i></span>
-                        <input type="text" id="basic-icon-default-company" name="no_hp" class="form-control numeric-input" required />
+                        <input type="text" id="basic-icon-default-company" name="no_hp" class="form-control numeric-input npm" required />
                     </div>
                 </div>
                 <div class="mb-3">

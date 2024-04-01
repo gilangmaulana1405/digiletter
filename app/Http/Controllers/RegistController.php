@@ -55,25 +55,31 @@ class RegistController extends Controller
             return redirect()->back()->withInput()->with('error', 'Email sudah terdaftar. Gunakan email lain.');
         }
 
-        // Buat pengguna dan mahasiswa
-        $user = User::create([
-            'name' => Str::title(request('name')),
-            'npm' => $npm,
-            'email' => $email,
-            'password' => bcrypt(request('password')),
-            'remember_token' => Str::random(60),
-        ]);
+        // Periksa apakah npm terdaftar di tabel Mahasiswa
+        $mahasiswa = Mahasiswa::where('npm', $npm)->first();
+        if (!$mahasiswa) {
+            return redirect()->back()->withInput()->with('error', 'NPM yang dimasukkan bukan mahasiswa Fasilkom.');
+        }
+
+        // Temukan atau buat pengguna baru
+        $user = User::firstOrCreate(
+            ['npm' => $npm],
+            [
+                'name' => Str::title(request('name')),
+                'email' => $email,
+                'password' => bcrypt(request('password')),
+                'remember_token' => Str::random(60),
+            ]
+        );
 
         // Hubungkan pengguna dengan mahasiswa
-        $mahasiswa = Mahasiswa::create([
-            'user_id' => $user->id,
-            'foto' => 'user_profile.png',
-        ]);
+        Mahasiswa::updateOrCreate(
+            ['npm' => $npm],
+            ['user_id' => $user->id, 'foto' => 'user_profile.png']
+        );
 
         return redirect()->route('login')->with('success', 'Anda Telah Berhasil Mendaftar!');
     }
-
-
 
     private function containsHtmlSpecialChar($data)
     {

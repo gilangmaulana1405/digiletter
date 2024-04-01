@@ -131,7 +131,7 @@ User Settings
                         <label class="form-label" for="basic-icon-default-phone">No HP</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-phone2" class="input-group-text"></span>
-                            <input type="number" id="basic-icon-default-phone" name="no_hp" class="form-control phone-mask numeric-input" value="{{ $user->mahasiswa->no_hp ?? '' }}" />
+                            <input type="number" id="basic-icon-default-phone" name="no_hp" class="form-control phone-mask numeric-input npm" value="{{ $user->mahasiswa->no_hp ?? '' }}" />
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Profile</button>

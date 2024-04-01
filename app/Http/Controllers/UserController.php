@@ -162,19 +162,6 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    // public function downloadSurat($folders, $file_path)
-    // {
-    //     $folders = ['surat-izin-penelitian', 'surat-keterangan-aktif', 'surat-keterangan-aktif-ortu-pns', 'surat-bebas-pustaka', 'surat-pengajuan-cuti'];
-
-    //     $file = storage_path("app/public/{$folders}/{$file_path}");
-
-    //     if (file_exists($file)) {
-    //         return response()->download($file);
-    //     } else {
-    //         abort(404, 'File not found');
-    //     }
-    // }
-
     public function downloadSurat($folders, $file_path)
     {
         $allowedFolders = ['surat-izin-penelitian', 'surat-keterangan-aktif', 'surat-keterangan-aktif-ortu-pns', 'surat-bebas-pustaka', 'surat-pengajuan-cuti'];
@@ -189,6 +176,19 @@ class UserController extends Controller
             return response()->download($file);
         } else {
             abort(404, 'File not found');
+        }
+    }
+
+    public function userGuide($id)
+    {
+        $userAuth = auth()->user();
+        if ($userAuth && $userAuth->mahasiswa) {
+            $navbarView = view('layouts/navbar', compact('userAuth'));
+            $sidebarView = view('layouts/sidebar', compact('userAuth'));
+
+            return view('pages.userGuide', [
+                $navbarView, $sidebarView, 'userAuth'
+            ]);
         }
     }
 }

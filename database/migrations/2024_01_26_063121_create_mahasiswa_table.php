@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
+            $table->bigInteger('npm')->nullable();
             $table->integer('semester')->nullable();
             $table->enum('prodi',['Informatika', 'Sistem Informasi'])->nullable();
             $table->string('domisili')->nullable();
