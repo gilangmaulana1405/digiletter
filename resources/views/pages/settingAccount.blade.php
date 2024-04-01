@@ -88,8 +88,22 @@ User Settings
                     <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-company">Semester</label>
                         <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-company2" class="input-group-text"></span>
-                            <input type="number" id="basic-icon-default-company" name="semester" class="form-control numeric-input" value="{{ $user->mahasiswa->semester ?? '' }}" />
+                            <select name="semester" class="select2-icons form-select">
+                                <option value="I (Satu)">I (Satu)</option>
+                                <option value="II (Dua)">II (Dua)</option>
+                                <option value="III (Tiga)">III (Tiga)</option>
+                                <option value="IV (Empat)">IV (Empat)</option>
+                                <option value="V (Lima)">V (Lima)</option>
+                                <option value="VI (Enam)">VI (Enam)</option>
+                                <option value="VII (Tujuh)">VII (Tujuh)</option>
+                                <option value="VIII (Delapan)">VIII (Delapan)</option>
+                                <option value="IX (Sembilan)">IX (Sembilan)</option>
+                                <option value="X (Sepuluh)">X (Sepuluh)</option>
+                                <option value="XI (Sebelas)">XI (Sebelas)</option>
+                                <option value="XII (Dua Belas)">XII (Dua Belas)</option>
+                                <option value="XIII (Tiga Belas)">XIII (Tiga Belas)</option>
+                                <option value="XIV (Empat Belas)">XIV (Empat Belas)</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3">

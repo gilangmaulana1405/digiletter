@@ -51,15 +51,20 @@ Surat Keterangan Aktif Ortu PNS
                     <label class="form-label" for="basic-icon-default-company">Semester</label>
                     <div class="input-group input-group-merge">
                         <select name="semester" class="select2-icons form-select">
-                            <option value="I (Satu)" data-icon="ti ti-tallymarks">I (Satu)</option>
-                            <option value="II (Dua)" data-icon="ti ti-tallymarks">II (Dua)</option>
-                            <option value="III (Tiga)" data-icon="ti ti-tallymarks">III (Tiga)</option>
-                            <option value="IV (Empat)" data-icon="ti ti-tallymarks">IV (Empat)</option>
-                            <option value="V (Lima)" data-icon="ti ti-tallymarks">V (Lima)</option>
-                            <option value="VI (Enam)" data-icon="ti ti-tallymarks">VI (Enam)</option>
-                            <option value="VII (Tujuh)" data-icon="ti ti-tallymarks">VII (Tujuh)</option>
-                            <option value="VIII (Delapan)" data-icon="ti ti-tallymarks">VIII (Delapan)</option>
-                            <option value="X (Sepuluh)" data-icon="ti ti-tallymarks">X (Sepuluh)</option>
+                            <option value="I (Satu)">I (Satu)</option>
+                            <option value="II (Dua)">II (Dua)</option>
+                            <option value="III (Tiga)">III (Tiga)</option>
+                            <option value="IV (Empat)">IV (Empat)</option>
+                            <option value="V (Lima)">V (Lima)</option>
+                            <option value="VI (Enam)">VI (Enam)</option>
+                            <option value="VII (Tujuh)">VII (Tujuh)</option>
+                            <option value="VIII (Delapan)">VIII (Delapan)</option>
+                            <option value="IX (Sembilan)">IX (Sembilan)</option>
+                            <option value="X (Sepuluh)">X (Sepuluh)</option>
+                            <option value="XI (Sebelas)">XI (Sebelas)</option>
+                            <option value="XII (Dua Belas)">XII (Dua Belas)</option>
+                            <option value="XIII (Tiga Belas)">XIII (Tiga Belas)</option>
+                            <option value="XIV (Empat Belas)">XIV (Empat Belas)</option>
                         </select>
                     </div>
                 </div>

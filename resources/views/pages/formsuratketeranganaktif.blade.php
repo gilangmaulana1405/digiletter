@@ -59,7 +59,12 @@ Surat Keterangan Aktif
                             <option value="VI (Enam)">VI (Enam)</option>
                             <option value="VII (Tujuh)">VII (Tujuh)</option>
                             <option value="VIII (Delapan)">VIII (Delapan)</option>
+                            <option value="IX (Sembilan)">IX (Sembilan)</option>
                             <option value="X (Sepuluh)">X (Sepuluh)</option>
+                            <option value="XI (Sebelas)">XI (Sebelas)</option>
+                            <option value="XII (Dua Belas)">XII (Dua Belas)</option>
+                            <option value="XIII (Tiga Belas)">XIII (Tiga Belas)</option>
+                            <option value="XIV (Empat Belas)">XIV (Empat Belas)</option>
                         </select>
                     </div>
                 </div>
