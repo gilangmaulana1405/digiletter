@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->bigInteger('npm')->nullable();
-            $table->integer('semester')->nullable();
+            $table->string('semester')->nullable();
             $table->enum('prodi',['Informatika', 'Sistem Informasi'])->nullable();
             $table->string('domisili')->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();

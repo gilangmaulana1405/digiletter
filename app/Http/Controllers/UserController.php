@@ -44,19 +44,17 @@ class UserController extends Controller
     public function lengkapiProfile(Request $request, $id)
     {
         $request->validate([
-            'semester' => 'required|numeric',
             'domisili' => 'required',
             'no_hp' => 'required|numeric',
             'foto' => 'image|mimes:jpg,png,svg|max:500', // Menambahkan batasan ukuran file
         ], [
-            'semester.required' => 'Semester harus diisi',
             'domisili.required' => 'Domisili harus diisi',
             'no_hp.required' => 'Nomor HP harus diisi',
             'foto.max' => 'Ukuran gambar tidak boleh melebihi 500 KB.'
         ]);
 
         // Memeriksa apakah ada kolom yang belum diisi
-        $columnsToCheck = ['semester', 'domisili', 'no_hp'];
+        $columnsToCheck = ['domisili', 'no_hp'];
         foreach ($columnsToCheck as $column) {
             if (!$request->filled($column)) {
                 return redirect()->route('user.profile', ['id' => $id])->with('error', ucfirst($column) . ' harus diisi.');
@@ -101,7 +99,6 @@ class UserController extends Controller
 
         return redirect()->route('user.profile',  ['id' => $id])->with('success', 'Data diri telah berhasil diubah!');
     }
-
 
     public function settingAccount($id)
     {
