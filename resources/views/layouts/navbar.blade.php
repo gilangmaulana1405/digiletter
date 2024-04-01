@@ -126,6 +126,12 @@
                             <span class="align-middle">Pengaturan</span>
                         </a>
                     </li>
+                     <li>
+                         <a class="dropdown-item" href="{{ route('user.userGuide', ['id' => auth()->id()]) }}">
+                             <i class="ti ti-help me-2 ti-sm"></i>
+                             <span class="align-middle">User Guide</span>
+                         </a>
+                     </li>
                     <li>
                         <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="ti ti-logout me-2 ti-sm"></i>

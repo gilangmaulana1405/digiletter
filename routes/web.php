@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/settings-account/{id}', [UserController::class, 'settingAccount'])->name('user.settingAccount');
     Route::get('/user/settings-security/{id}', [UserController::class, 'settingSecurity'])->name('user.settingSecurity');
     Route::post('/user/settings/{id}', [UserController::class, 'changePassword'])->name('change.password');
-    Route::get('/user/user-guide/{id}', [UserController::class, 'userGuide'])->name('user.userGuide')
+    Route::get('/user/user-guide/{id}', [UserController::class, 'userGuide'])->name('user.userGuide');
 });
 
 // ======== admin ============

@@ -7,8 +7,20 @@ Riwayat Surat
 @section('mainContent')
 
 <div class="col-xl">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="alert alert-info position-relative" role="alert">
+                <h4 class="alert-heading">Informasi!</h4>
+                <ul>
+                    <li>Tombol Download muncul ketika surat telah disetujui oleh Admin, harap untuk menunggu.</li>
+                    <li>Disarankan ukuran layar 90%.</li>
+                </ul>
+                <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
     <div class="card">
-        <h5 class="card-header">Riwayat {{ $jenisSurat }}</h5>
+        <h5 class="card-header"><a href="/home" class="me-2" style="font-size:24px;"><i class="ti ti-arrow-narrow-left"></i></a> Riwayat {{ $jenisSurat }}</h5>
         <div class="card-datatable table-responsive pt-0">
             <table class="table table-striped" ref="dataTable" id="riwayat-surat">
                 <thead>
@@ -86,7 +98,7 @@ Riwayat Surat
 
                             @if($d->status == 'disetujui')
                             <a href="{{ route('download-surat', ['folders' => $folder, 'file_path' => $d->file_path]) }}" class="badge bg-info rounded-pill me-2">
-                                <i class="ti ti-download"></i> Download
+                                <i class="ti ti-download d-inline-block align-middle"></i> Download
                             </a>
                             @elseif($d->status == '')
                             <span class="badge rounded-pill bg-warning">Pending</span>

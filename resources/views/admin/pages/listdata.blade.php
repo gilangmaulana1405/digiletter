@@ -24,7 +24,7 @@ List Data Surat
     <!-- Column Search -->
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Daftar {{ $jenisSurat }}</h5>
+            <h5 class="mb-0"> <a href="/admin" class="me-2" style="font-size:24px;"><i class="ti ti-arrow-narrow-left"></i></a> Daftar {{ $jenisSurat }}</h5>
             @if(request()->is('admin/listdata/suratizinpenelitian'))
             <a href="{{ route('export-surat-izin-penelitian') }}" class="btn btn-success">Export Excel</a>
             @elseif(request()->is('admin/listdata/suratketeranganaktif'))
