@@ -35,9 +35,9 @@ class RegistController extends Controller
         }
 
         // Ambil awalan npm dari email (contoh: 2010631170075@student.unsika.ac.id -> 2010631170075)
-        preg_match($npmRegex, $email, $matches);
-        $extractedNpm = $matches[1] ?? null;
-
+        // preg_match($npmRegex, $email, $matches);
+        // $extractedNpm = $matches[1] ?? null;
+        
         // Periksa apakah npm yang diambil sesuai dengan npm yang diinput
         // if ($extractedNpm !== $npm) {
         //     return redirect()->back()->withInput()->with('error', 'Bagian depan email harus sesuai dengan NPM.');

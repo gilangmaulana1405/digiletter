@@ -141,7 +141,7 @@
                 </td>
                 <td>:</td>
                 <td>
-                    <font size="3">{{ \Carbon\Carbon::parse($data['tgl_lahir'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
+                    <font size="3">{{ $data['tempat_lahir'] }}, {{ \Carbon\Carbon::parse($data['tgl_lahir'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
                 </td>
             </tr>
             <td>

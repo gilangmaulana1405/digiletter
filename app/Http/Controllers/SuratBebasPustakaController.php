@@ -103,13 +103,13 @@ class SuratBebasPustakaController extends Controller
         return $pdf;
     }
 
-    private function updatePdfContent($SuraBebasPustaka)
+    private function updatePdfContent($SuratBebasPustaka)
     {
         // Gantilah dengan path file PDF yang sesuai dengan struktur penyimpanan Anda
-        $outputPath = storage_path('app\\public\\surat-bebas-pustaka\\' . $SuraBebasPustaka->file_path);
+        $outputPath = storage_path('app\\public\\surat-bebas-pustaka\\' . $SuratBebasPustaka->file_path);
 
         // Gunakan dompdf untuk membuat PDF baru dengan informasi yang diperbarui
-        $pdf = $this->createPdf($SuraBebasPustaka);
+        $pdf = $this->createPdf($SuratBebasPustaka);
 
         // Simpan PDF baru dengan konten yang diperbarui
         $pdf->save($outputPath);

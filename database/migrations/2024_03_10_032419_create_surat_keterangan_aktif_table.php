@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('prodi',['Informatika', 'Sistem Informasi']);
             $table->enum('periode',['Gasal', 'Genap']);
             $table->string('tahun_akademik');
+            $table->string('tempat_lahir');
             $table->string('tgl_lahir');
             $table->text('alamat');
             $table->string('jenis_surat')->default('Surat Keterangan Aktif Kuliah');

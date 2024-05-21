@@ -85,6 +85,13 @@ Surat Keterangan Aktif
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-company">Tempat Lahir</label>
+                    <div class="input-group input-group-merge">
+                        <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-map-pin"></i></span>
+                        <input type="text" id="basic-icon-default-company" name="tempat_lahir" class="form-control" required />
+                    </div>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-company">Tanggal Lahir</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-company2" class="input-group-text"><i class="ti ti-calendar"></i></span>
@@ -94,7 +101,7 @@ Surat Keterangan Aktif
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Alamat</label>
                     <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-message2" class="input-group-text"><i class="ti ti-map-pin"></i></span>
+                        <span id="basic-icon-default-message2" class="input-group-text"><i class="ti ti-location"></i></span>
                         <textarea id="basic-icon-default-message" name="alamat" class="form-control" placeholder="" required></textarea>
                     </div>
                 </div>

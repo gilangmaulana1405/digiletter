@@ -46,6 +46,7 @@ class SuratKeteranganAktifController extends Controller
         $data->npm = $request->input('npm');
         $data->prodi = $request->input('prodi');
         $data->semester = $request->input('semester');
+        $data->tempat_lahir = $request->input('tempat_lahir');
         $data->tgl_lahir = $request->input('tgl_lahir');
         $data->alamat = Str::title($request->input('alamat'));
         $data->periode = $request->input('periode');
