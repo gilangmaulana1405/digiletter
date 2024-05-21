@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('ttd_pimpinan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pimpinan');
-            $table->enum('prodi_pimpinan', ['Informatika', 'Sistem Informasi', 'Wadek']);
+            // $table->enum('prodi_pimpinan', ['Informatika', 'Sistem Informasi', 'Wadek']);
+            $table->string('prodi_pimpinan');
             $table->string('penanda_tangan');
             $table->string('ttd_image');
             $table->string('nomor_induk');

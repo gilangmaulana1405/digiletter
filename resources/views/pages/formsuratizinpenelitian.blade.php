@@ -81,14 +81,14 @@ Surat Izin Penelitian
                     <label class="form-label" for="basic-icon-default-fullname">Tujuan Surat</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-drag-drop"></i></span>
-                        <input type="text" class="form-control alphabet-input" name="tujuan_surat" id="basic-icon-default-fullname" placeholder="Cth: Kepala Dinas Perhubungan/HRD PT. Angin Ribut/Manajer Plaza Cafe" required />
+                        <input type="text" class="form-control" name="tujuan_surat" id="basic-icon-default-fullname" placeholder="Cth: Kepala Dinas Perhubungan/HRD PT. Angin Ribut/Manajer Plaza Cafe" required />
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">Tujuan Instansi</label>
                     <div class="input-group input-group-merge">
                         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-location"></i></span>
-                        <input type="text" class="form-control alphabet-input" name="tujuan_instansi" id="basic-icon-default-fullname" placeholder="Cth: Dinas Perhubungan/Plaza Cafe/PT. Angin Ribut" required />
+                        <input type="text" class="form-control" name="tujuan_instansi" id="basic-icon-default-fullname" placeholder="Cth: Dinas Perhubungan/Plaza Cafe/PT. Angin Ribut" required />
                     </div>
                 </div>
                 <div class="mb-3">
