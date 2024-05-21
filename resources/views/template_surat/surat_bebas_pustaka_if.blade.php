@@ -44,6 +44,10 @@
             justify-content: space-between;
         }
 
+        .indent {
+            margin-left: -24px;
+        }
+
     </style>
 </head>
 
@@ -182,7 +186,7 @@
             <tr>
                 <td width="340"></td>
                 <td align="left">
-                    <font size="3">{!! nl2br($ttdPimpinanDataIF[0]->penanda_tangan ?? $defaultTtdData['penanda_tangan'] ?? '') !!}</font>
+                    <font size="3" class="indent">{!! nl2br($ttdPimpinanDataIF[0]->penanda_tangan ?? $defaultTtdData['penanda_tangan'] ?? '') !!}</font>
                     <br>
                     <div class="container">
                         <br>

@@ -58,7 +58,9 @@ Admin Profile
                                 <select name="prodi_pimpinan" id="select2IconsProdi" class="select2-icons form-select">
                                     <option value="Informatika" {{ old('prodi_pimpinan') == 'Informatika' ? 'selected' : '' }}>Informatika</option>
                                     <option value="Sistem Informasi" {{ old('prodi_pimpinan') == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
-                                    <option value="Wadek" {{ old('prodi_pimpinan') == 'Wadek' ? 'selected' : '' }}>Wadek</option>
+                                    <option value="Wadek" {{ old('prodi_pimpinan') == 'Wadek' ? 'selected' : '' }}>Wakil Dekan Bidang Akademik Kemahasiswaan</option>
+                                    <option value="IF (Surat Bebas Pustaka)" {{ old('prodi_pimpinan') == 'IF (Surat Bebas Pustaka)' ? 'selected' : '' }}>IF (Surat Bebas Pustaka)</option>
+                                    <option value="SI (Surat Bebas Pustaka)" {{ old('prodi_pimpinan') == 'SI (Surat Bebas Pustaka)' ? 'selected' : '' }}>SI (Surat Bebas Pustaka)</option>
                                 </select>
                             </div>
                         </div>

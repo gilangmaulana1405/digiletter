@@ -44,6 +44,10 @@
             text-align: center;
         }
 
+        .indent {
+            margin-left: -24px;
+        }
+
     </style>
 </head>
 
@@ -185,7 +189,7 @@
                 <td align="left">
                     <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['created_at'])->locale('id_ID')->isoFormat('D MMMM Y') }} </font>
                     <br>
-                    <font size="3">{!! nl2br($ttdPimpinanDataSI[0]->penanda_tangan ?? $defaultTtdData['penanda_tangan'] ?? '') !!}</font>
+                    <font size="3" class="indent">{!! nl2br($ttdPimpinanDataSI[0]->penanda_tangan ?? $defaultTtdData['penanda_tangan'] ?? '') !!}</font>
                     <br>
                     <div class="container">
                         <br>
