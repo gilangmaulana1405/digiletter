@@ -81,7 +81,16 @@ class SuratBebasPustakaController extends Controller
                     ];
                 $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_if', compact('data', 'defaultTtdData'));
             } else {
-                $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_if', compact('data', 'ttdPimpinanDataIF'));
+                // $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_if', compact('data', 'ttdPimpinanDataIF'));
+
+                $defaultTtdData =
+                    [
+                        'penanda_tangan' => 'a.n Dekan <br> Koordinator Program Studi Informatika',
+                        'nama_pimpinan' => 'E. Haodudin Nurkifli, M.Cs., Ph.D',
+                        'ttd_image' => 'ttd_hao.png',
+                        'nomor_induk' => 'NIP. 198504032021211003'
+                    ];
+                $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_if', compact('data', 'defaultTtdData'));
             }
         } elseif ($data->prodi === 'Sistem Informasi') {
             if ($ttdPimpinanDataSI->isEmpty()) {
@@ -93,7 +102,15 @@ class SuratBebasPustakaController extends Controller
                 ];
                 $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_si', compact('data', 'defaultTtdData'));
             } else {
-                $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_si', compact('data', 'ttdPimpinanDataSI'));
+                // $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_si', compact('data', 'ttdPimpinanDataSI'));
+
+                $defaultTtdData = [
+                    'penanda_tangan' => 'a.n Dekan <br> Koordinator Program Studi Sistem Informasi',
+                    'nama_pimpinan' => 'Azhari Ali Ridha, S.Kom., M.M.S.I.',
+                    'ttd_image' => 'ttd_azhari.png',
+                    'nomor_induk' => 'NIDN. 0415098003'
+                ];
+                $pdf = PDF::loadView('template_surat.surat_bebas_pustaka_si', compact('data', 'defaultTtdData'));
             }
         }
 
