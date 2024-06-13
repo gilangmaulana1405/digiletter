@@ -75,7 +75,7 @@ class SuratBebasPustakaController extends Controller
                 $defaultTtdData =
                     [
                         'penanda_tangan' => 'a.n Dekan <br> Koordinator Program Studi Informatika',
-                        'nama_pimpinan' => 'E. Haodudin Nurkifli, M.Cs., Ph.D',
+                        'nama_pimpinan' => 'E. Haodudin Nurkifli, M.Cs., Ph.D.',
                         'ttd_image' => 'ttd_hao.png',
                         'nomor_induk' => 'NIP. 198504032021211003'
                     ];
@@ -141,7 +141,7 @@ class SuratBebasPustakaController extends Controller
 
         $SuratBebasPustaka->nomor_surat = $request->input('nomor_surat');
         $SuratBebasPustaka->status = 'disetujui';
-        $SuratBebasPustaka->updated_at = now();
+        $SuratBebasPustaka = $request->input('updated_at');
         $SuratBebasPustaka->save();
 
         // ambil nama_mhs saja dalam 1 data objek

@@ -87,6 +87,8 @@ class SuratPengajuanCutiController extends Controller
         $templateProcessor->setValue('alamat', $data->alamat);
         $templateProcessor->setValue('no_hp', $data->no_hp);
         $templateProcessor->setValue('alasan_cuti', $data->alasan_cuti);
+         $templateProcessor->setValue('periode', $data->periode);
+        $templateProcessor->setValue('tahun_akademik', $data->tahun_akademik);
         $templateProcessor->setValue('created_at',  \Carbon\Carbon::parse($data->created_at)->locale('id_ID')->isoFormat('D MMMM Y'));
 
         $templateProcessor->saveAs($outputPath);
@@ -107,6 +109,8 @@ class SuratPengajuanCutiController extends Controller
         $templateProcessor->setValue('alamat', $suratPengajuanCuti->alamat);
         $templateProcessor->setValue('no_hp', $suratPengajuanCuti->no_hp);
         $templateProcessor->setValue('alasan_cuti', $suratPengajuanCuti->alasan_cuti);
+         $templateProcessor->setValue('periode', $suratPengajuanCuti->periode);
+        $templateProcessor->setValue('tahun_akademik', $suratPengajuanCuti->tahun_akademik);
         $templateProcessor->setValue('created_at',  \Carbon\Carbon::parse($suratPengajuanCuti->created_at)->locale('id_ID')->isoFormat('D MMMM Y'));
         $templateProcessor->setValue('nomor_surat', $suratPengajuanCuti->nomor_surat);
         // Add more fields as needed
@@ -141,7 +145,7 @@ class SuratPengajuanCutiController extends Controller
 
         $SuratPengajuanCuti->nomor_surat = $request->input('nomor_surat');
         $SuratPengajuanCuti->status = 'disetujui';
-        $SuratPengajuanCuti->updated_at = now();
+        $SuratPengajuanCuti->updated_at = $request->input('updated_at');
         $SuratPengajuanCuti->save();
 
         // ambil nama_mhs saja dalam 1 data objek

@@ -26,7 +26,7 @@ Home
         <div class="card-body">
             <ul class="nav nav-tabs widget-nav-tabs pb-3 gap-4 mx-1 d-flex flex-nowrap" role="tablist">
                 <li class="nav-item">
-                    <a href="/admin/listdata/suratizinpenelitian" class="nav-link btn active d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-orders-id" aria-controls="navs-orders-id" aria-selected="true">
+                    <a href="{{ route('listdata.suratizinpenelitian') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center">
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalSuratIzinPenelitian }}
                         </div>
@@ -34,7 +34,8 @@ Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link btn d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-sales-id" aria-controls="navs-sales-id" aria-selected="false">
+                    <a href="{{ route('listdata.suratketeranganaktif') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center">
+
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalSuratKeteranganAktif }}
                         </div>
@@ -42,7 +43,8 @@ Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link btn d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-income-id" aria-controls="navs-income-id" aria-selected="false" style="width: 150px; height: 150px;">
+                    <a href="{{ route('listdata.suratketeranganaktifortupns') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center" style="width: 150px; height: 150px;">
+
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalSuratKeteranganAktifOrtuPns }}
                         </div>
@@ -50,7 +52,7 @@ Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link btn d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-income-id" aria-controls="navs-income-id" aria-selected="false">
+                    <a href="{{ route('listdata.suratbebaspustaka') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center">
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalSuratBebasPustaka }}
                         </div>
@@ -58,7 +60,7 @@ Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link btn d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-income-id" aria-controls="navs-income-id" aria-selected="false">
+                    <a href="{{ route('listdata.suratpengajuancuti') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center">
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalSuratPengajuanCuti }}
                         </div>
@@ -66,7 +68,7 @@ Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link btn d-flex flex-column align-items-center justify-content-center" role="tab" data-bs-toggle="tab" data-bs-target="#navs-income-id" aria-controls="navs-income-id" aria-selected="false">
+                    <a href="{{ route('index.mahasiswa') }}" class="nav-link btn active d-flex flex-column align-items-center justify-content-center">
                         <div class="badge bg-label-secondary rounded p-2" style="font-size: 20px;">
                             {{ $totalMahasiswa }}
 
@@ -124,10 +126,8 @@ Home
                     <div class="d-flex flex-grow-1 align-items-center">
                         <div class="progress w-100 me-3" style="height: 8px">
                             <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $totalSuratIzinPenelitian }}%" aria-valuenow="{{ $totalSuratIzinPenelitian }}" aria-valuemin="0" aria-valuemax="100"></div>
-
                         </div>
                         <span class="text-muted">{{ $totalSuratIzinPenelitian }}%</span>
-
                     </div>
                 </li>
                 <li class="mb-3 pb-1 d-flex">

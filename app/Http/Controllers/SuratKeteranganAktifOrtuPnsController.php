@@ -99,7 +99,7 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
         if ($ttdPimpinanDataWadek->isEmpty()) {
             $defaultTtdData =
                 [
-                    'penanda_tangan' => 'a.n Dekan, <br> Wakil Dekan Bidang Akademik dan Kemahasiswaan',
+                    'penanda_tangan' => 'a.n Dekan <br> Wakil Dekan Bidang Akademik dan Kemahasiswaan,',
                     'nama_pimpinan' => 'Nina Sulistiyowati, ST., M.Kom.',
                     'ttd_image' => 'ttd_wadek.png',
                     'nomor_induk' => 'NIP. 198302092021212006'
@@ -153,7 +153,7 @@ class SuratKeteranganAktifOrtuPnsController extends Controller
 
         $SuratKeteranganAktifOrtuPns->nomor_surat = $request->input('nomor_surat');
         $SuratKeteranganAktifOrtuPns->status = 'disetujui';
-        $SuratKeteranganAktifOrtuPns->updated_at = now();
+        $SuratKeteranganAktifOrtuPns->updated_at = $request->input('updated_at');
         $SuratKeteranganAktifOrtuPns->save();
 
         // ambil nama_mhs saja dalam 1 data objek

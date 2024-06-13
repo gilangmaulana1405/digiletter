@@ -19,7 +19,12 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    // 'allowed_origins' => ['*'],
+    'allowed_origins' => [
+    'http://localhost:8081',
+    'http://127.0.0.1:8000',
+    // Tambahkan origin lain jika diperlukan
+],
 
     'allowed_origins_patterns' => [],
 

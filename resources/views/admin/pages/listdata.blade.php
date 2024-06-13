@@ -50,6 +50,7 @@ List Data Surat
                         <th>Lampiran</th>
                         <th style="width:200px;">Aktivitas</th>
                         <th>Tanggal Approve</th>
+                        <th>Keterangan Ditolak</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -163,6 +164,9 @@ List Data Surat
                             @endif
                         </td>
                         <td>
+                            {{ $d->keterangan }}
+                        </td>
+                        <td>
                             @if($d->status == 'disetujui')
                             <span class="badge badge-sm rounded-pill bg-label-success">Disetujui</span>
 
@@ -179,13 +183,17 @@ List Data Surat
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Nomor Surat</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Approval Surat </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- Form inside the modal -->
                                     <form action="{{ $setujuiRoute }}" method="POST">
                                         @csrf
+                                        <div class="mb-3">
+                                            <label for="text-input" class="form-label">Tanggal Approve</label>
+                                            <input type="date" class="form-control" id="updated_at" name="updated_at">
+                                        </div>
                                         <div class="mb-3">
                                             <label for="text-input" class="form-label">Masukkan
                                                 Nomor Surat:</label>
@@ -273,15 +281,6 @@ List Data Surat
     </div>
     <!--/ Column Search -->
 </div>
-
-<script>
-    // reload halaman otomatis setiap 2 jam
-    function refreshPage() {
-        location.reload(true);
-    }
-    setInterval(refreshPage, 7200000); // 2 jam = 7200000 milidetik
-
-</script>
 
 <script>
     function showModalBuktiPembayaran(imageUrl) {

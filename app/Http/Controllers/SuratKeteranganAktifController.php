@@ -96,8 +96,8 @@ class SuratKeteranganAktifController extends Controller
             if ($ttdPimpinanDataIF->isEmpty()) {
                 $defaultTtdData =
                     [
-                        'penanda_tangan' => 'a.n Dekan <br> Koord. Program Studi',
-                        'nama_pimpinan' => 'E. Haodudin Nurkifli, M.Cs., Ph.D',
+                        'penanda_tangan' => 'a.n Dekan <br> Koord. Program Studi,',
+                        'nama_pimpinan' => 'E. Haodudin Nurkifli, M.Cs., Ph.D.',
                         'ttd_image' => 'ttd_if.png',
                         'nomor_induk' => 'NIP. 198504032021211003'
                     ];
@@ -108,7 +108,7 @@ class SuratKeteranganAktifController extends Controller
         } elseif ($data->prodi === 'Sistem Informasi') {
             if ($ttdPimpinanDataSI->isEmpty()) {
                 $defaultTtdData = [
-                    'penanda_tangan' => 'a.n Dekan, <br> Koor. Program Studi,',
+                    'penanda_tangan' => 'a.n Dekan <br> Koor. Program Studi,',
                     'nama_pimpinan' => 'Azhari Ali Ridha, S.Kom., M.M.S.I.',
                     'ttd_image' => 'ttd_si.png',
                     'nomor_induk' => 'NIDN. 0415098003'
@@ -164,7 +164,7 @@ class SuratKeteranganAktifController extends Controller
 
         $SuratKeteranganAktif->nomor_surat = $request->input('nomor_surat');
         $SuratKeteranganAktif->status = 'disetujui';
-        $SuratKeteranganAktif->updated_at = now();
+        $SuratKeteranganAktif->updated_at = $request->input('updated_at');
         $SuratKeteranganAktif->save();
 
         // ambil nama_mhs saja dalam 1 data objek

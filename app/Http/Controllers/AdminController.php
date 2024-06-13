@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Ttd;
 use App\Models\User;
+use GuzzleHttp\Client;
 use App\Models\Mahasiswa;
 use App\Models\SuratTugas;
 use App\Models\TtdPimpinan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Events\UserDataInput;
-use App\Exports\SuratBebasPustakaExport;
 use App\Models\SuratBebasPustaka;
 use App\Models\SuratPengajuanCuti;
 use App\Models\SuratIzinPenelitian;
@@ -19,13 +19,14 @@ use App\Models\SuratKeteranganAktif;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\SuratBebasPustakaExport;
 use Illuminate\Support\Facades\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Exports\SuratPengajuanCutiExport;
 use App\Exports\SuratIzinPenelitianExport;
 use App\Exports\SuratKeteranganAktifExport;
 use App\Models\SuratKeteranganAktifOrtuPns;
 use App\Exports\SuratKeteranganAktifOrtuPnsExport;
-use App\Exports\SuratPengajuanCutiExport;
 
 class AdminController extends Controller
 {
@@ -248,7 +249,7 @@ class AdminController extends Controller
 
         return Excel::download(new SuratIzinPenelitianExport, $filename);
     }
-    
+
     public function exportSuratKeteranganAktif()
     {
         $tanggal = Carbon::now()->locale('id')->isoFormat('D MMMM Y');
@@ -278,5 +279,103 @@ class AdminController extends Controller
         $filename = 'Export Surat Pengajuan Cuti_' . $tanggal . '.xlsx';
 
         return Excel::download(new SuratPengajuanCutiExport, $filename);
+    }
+
+    public function indexMahasiswa()
+    {
+        $navbarView = view('admin.layouts.navbar');
+        $sidebarView = view('admin.layouts.sidebar');
+        $title = 'Data Mahasiswa';
+
+        // Ambil data mahasiswa dengan relasi dan pengurutan
+        $mahasiswa = Mahasiswa::with('user')
+            ->orderBy('updated_at', 'desc')
+            ->orderByRaw("FIELD(prodi, 'Informatika') DESC")
+            ->orderBy('npm', 'desc')
+            ->orderBy('prodi')
+            ->paginate(10); // Ganti 10 dengan jumlah yang diinginkan
+
+        return view('admin.pages.mahasiswa', [
+            'title' => $title,
+            'data' => $mahasiswa,
+            'navbarView' => $navbarView,
+            'sidebarView' => $sidebarView,
+        ]);
+    }
+
+    public function getAllMahasiswa(Request $request)
+    {
+        $search = $request->input('search.value');
+        $length = $request->input('length', 10);
+        $start = $request->input('start', 0);
+        $draw = $request->input('draw');
+
+        $query = Mahasiswa::with('user')
+            ->orderBy('updated_at', 'desc')
+            ->orderByRaw("FIELD(prodi, 'Informatika') DESC")
+            ->orderBy('npm', 'desc')
+            ->orderBy('prodi');
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('npm', 'like', "%{$search}%")
+                    ->orWhere('prodi', 'like', "%{$search}%")
+                    ->orWhere('domisili', 'like', "%{$search}%")
+                    ->orWhere('jenis_kelamin', 'like', "%{$search}%")
+                    ->orWhere('no_hp', 'like', "%{$search}%")
+                    ->orWhere('status', 'like', "%{$search}%")
+                    ->orWhereHas('user', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        $totalFiltered = $query->count();
+
+        $mahasiswa = $query->skip($start)->take($length)->get();
+
+        return response()->json([
+            'draw' => intval($draw),
+            'recordsTotal' => Mahasiswa::count(),
+            'recordsFiltered' => $totalFiltered,
+            'data' => $mahasiswa,
+        ]);
+    }
+
+    public function addMahasiswa(Request $request)
+    {
+        $existingNpm = Mahasiswa::where('npm', $request->npm)->first();
+        if ($existingNpm) {
+            return redirect()->route('index.mahasiswa')->with('error', 'NPM sudah ada di database.');
+        }
+
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->npm = $request->npm;
+        $mahasiswa->prodi = $request->prodi;
+        $mahasiswa->status = $request->status;
+        $mahasiswa->save();
+
+        return redirect()->route('index.mahasiswa')->with('success', 'Mahasiswa baru berhasil ditambahkan.');
+    }
+
+    public function editMahasiswa(Request $request, $id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+
+        $mahasiswa->update([
+            'npm' => $request->npm,
+            'prodi' => $request->prodi,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('index.mahasiswa')->with('success', 'Data mahasiswa berhasil diubah.');
+    }
+
+    public function deletelMahasiswa($id)
+    {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        $mahasiswa->delete();
+
+        return redirect()->route('index.mahasiswa')->with('success', 'Mahasiswa baru berhasil dihapus.');
     }
 }

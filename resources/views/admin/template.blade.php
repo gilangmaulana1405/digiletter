@@ -322,6 +322,85 @@
 
             </script>
 
+            {{-- load lebih dari 1000 data dan menggunakan paginasi limit 10 --}}
+            <script>
+                $(document).ready(function() {
+                    $('#mahasiswa').DataTable({
+                        processing: true
+                        , serverSide: true
+                        , ajax: {
+                            url: '/admin/data-mahasiswa/'
+                            , type: 'GET'
+                            , dataSrc: 'data'
+                        }
+                        , pageLength: 10
+                        , searchable: false
+                        , orderable: false
+                        , columns: [{
+                                data: null
+                                , name: 'iteration'
+                                , render: function(data, type, full, meta) {
+                                    return meta.row + meta.settings._iDisplayStart + 1;
+                                }
+                            }
+                            , {
+                                data: 'user.name'
+                                , name: 'user.name'
+                                , render: function(data, type, full, meta) {
+                                    return data ? data : 'Not register';
+                                }
+                            }
+
+                            , {
+                                data: 'npm'
+                                , name: 'npm'
+                            }
+                            , {
+                                data: 'semester'
+                                , name: 'semester'
+                            }
+                            , {
+                                data: 'prodi'
+                                , name: 'prodi'
+                            }
+                            , {
+                                data: 'domisili'
+                                , name: 'domisili'
+                            }
+                            , {
+                                data: 'jenis_kelamin'
+                                , name: 'jenis_kelamin'
+                            }
+                            , {
+                                data: 'no_hp'
+                                , name: 'no_hp'
+                            }
+                            , {
+                                data: 'status'
+                                , name: 'status'
+                            }
+                            , {
+                                data: 'aksi'
+                                , name: 'aksi'
+                                , orderable: false
+                                , searchable: false
+                                , render: function(data, type, full, meta) {
+                                    return `
+                            <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#myModalEditMhs-${full.id}">
+                                <i class="fa-solid fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#myModalDeleteMhs-${full.id}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        `;
+                                }
+                            }
+                        ]
+                    });
+                });
+
+            </script>
+
             {{-- sweetalert --}}
             @if (session()->has('success'))
             <script>
@@ -334,7 +413,6 @@
 
             </script>
             @endif
-
 </body>
 
 </html>

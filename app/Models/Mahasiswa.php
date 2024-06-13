@@ -14,6 +14,7 @@ use HasFactory;
 
   protected $fillable = [
     'user_id',
+    'npm',
     'semester',
     'prodi',
     'domisili',

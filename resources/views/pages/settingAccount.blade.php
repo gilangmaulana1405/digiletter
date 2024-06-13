@@ -42,7 +42,6 @@ User Settings
             </li>
         </ul>
 
-        {{-- lengkapi profile --}}
         <!-- Lengkapi Profile -->
         <div class="card card-action mb-4">
             <div class="card-header align-items-center">
@@ -82,7 +81,7 @@ User Settings
                         <label class="form-label" for="basic-icon-default-company">NPM</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-company2" class="input-group-text"></span>
-                            <input type="text" id="basic-icon-default-company" name="npm" class="form-control numeric-input npm" value="{{ auth()->user()->npm }}" />
+                            <input type="text" id="basic-icon-default-company" name="npm" class="form-control numeric-input npm" value="{{ auth()->user()->npm }}" readonly/>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -132,14 +131,8 @@ User Settings
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-icon-default-fullname">Status</label>
-                        <div class="input-group input-group-merge">
-                            <select name="status" class="select2-icons form-select">
-                                <option value="Aktif">Aktif</option>
-                                <option value="Lulus">Lulus</option>
-                                <option value="Drop Out">Drop Out</option>
-                            </select>
-                        </div>
+                        <label class="form-label" for="basic-icon-default-fullname">Status Mahasiswa</label>
+                        <input type="text" id="basic-icon-default-company" name="status" class="form-control" value="{{ $user->mahasiswa->status ?? '' }}" readonly />
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-phone">No HP</label>

@@ -72,12 +72,6 @@
                     <hr width="500">
                 </td>
             </tr>
-            <tr>
-                <td></td>
-                <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">
-                    <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['created_at'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
-                </td>
-            </tr>
         </table>
 
         <br>
@@ -89,8 +83,11 @@
                     <font size="3">Nomor</font>
                 </td>
                 <td>:</td>
-                <td width="400">
+                <td>
                     <font size="3">{{ $data['nomor_surat'] }}</font>
+                </td>
+                <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">
+                    <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['updated_at'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
                 </td>
             </tr>
             <tr>
@@ -98,7 +95,7 @@
                     <font size="3">Perihal</font>
                 </td>
                 <td>:</td>
-                <td width="400">
+                <td>
                     <font size="3">Surat Pengantar Permohonan Bebas Pustaka</font>
                 </td>
             </tr>

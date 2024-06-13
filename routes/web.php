@@ -106,7 +106,6 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/tidaksetuju-surat-pengajuan-cuti/{id}', [SuratPengajuanCutiController::class, 'tidaksetujuSuratPengajuanCuti']);
     Route::delete('/cancelsurat-pengajuan-cuti/{id}', [SuratPengajuanCutiController::class, 'cancelsuratPengajuanCuti']);
 
-
     // profil admin
     Route::get('/admin/profile/{id}', [AdminController::class, 'profile'])->name('admin.profile');
     Route::post('/admin/profile/{id}', [AdminController::class, 'changePassword'])->name('change.password.admin');
@@ -115,6 +114,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/upload-ttd/', [AdminController::class, 'formchangeTtd'])->name('form.change.ttd');
     Route::post('/admin/upload-ttd/', [AdminController::class, 'changeTtdPimpinan'])->name('change.ttdpimpinan');
     
+    // data mhs
+    Route::get('/admin/index-mahasiswa/', [AdminController::class, 'indexMahasiswa'])->name('index.mahasiswa');
+    Route::get('/admin/data-mahasiswa/', [AdminController::class, 'getAllMahasiswa'])->name('data.mahasiswa');
+    Route::post('/admin/data-mahasiswa/', [AdminController::class, 'addMahasiswa'])->name('add.mahasiswa');
+    Route::patch('/admin/data-mahasiswa/{id}', [AdminController::class, 'editMahasiswa'])->name('edit.mahasiswa');
+    Route::delete('/admin/-data-mahasiswa/{id}', [AdminController::class, 'deletelMahasiswa'])->name('delete.mahasiswa');
+
     // export excel
     Route::get('/export-surat-izin-penelitian', [AdminController::class, 'exportSuratIzinPenelitian'])->name('export-surat-izin-penelitian');
 

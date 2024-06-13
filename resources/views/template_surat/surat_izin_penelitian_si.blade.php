@@ -76,12 +76,6 @@
                     <hr width="500">
                 </td>
             </tr>
-            <tr>
-                <td></td>
-                <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">
-                    <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['created_at'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
-                </td>
-            </tr>
         </table>
         <br>
         <br>
@@ -91,21 +85,23 @@
                 <td>
                     <font size="3">Nomor</font>
                 </td>
-
-                <td width="400">: <font size="3">{{ $data->nomor_surat}}</font>
+                <td>: <font size="3">{{ $data->nomor_surat}}</font>
+                </td>
+                <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">
+                    <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['updated_at'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
                 </td>
             </tr>
             <tr>
                 <td>
                     <font size="3">Lampiran</font>
                 </td>
-                <td width="400">: -</td>
+                <td>: -</td>
             </tr>
             <tr>
                 <td>
                     <font size="3">Perihal</font>
                 </td>
-                <td width="400">: <font size="3">Permohonan Izin Penelitian</font>
+                <td>: <font size="3">Permohonan Izin Penelitian</font>
                 </td>
             </tr>
         </table>
@@ -211,8 +207,6 @@
             <tr>
                 <td width="340"></td>
                 <td align="left">
-                    <font size="3">Karawang, {{ \Carbon\Carbon::parse($data['created_at'])->locale('id_ID')->isoFormat('D MMMM Y') }}</font>
-                    <br>
                     <font size="3" class="indent">{!! nl2br($ttdPimpinanDataSI[0]->penanda_tangan ?? $defaultTtdData['penanda_tangan'] ?? '') !!}</font>
                     <br>
                     <div class="container">
