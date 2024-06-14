@@ -47,9 +47,18 @@ Data Mahasiswa
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"> <a href="/admin" class="me-2" style="font-size:24px;"><i class="ti ti-arrow-narrow-left"></i></a> Daftar {{ $title }}</h5>
 
-            <a href="#" class="btn btn-info btn-md" data-bs-toggle="modal" data-bs-target="#myModalAddMhs">
+            <form action="{{ route('import.mahasiswa') }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center">
+                @csrf
+                <div class="form-group me-2">
+                    <input type="file" name="file" class="form-control" accept=".xls,.xlsx,.csv" required>
+                </div>
+                <button class="btn btn-success">Import Mahasiswa</button>
+            </form>
+
+            {{-- nyalakan tombol ini jika ingin add mahasiswa satu per satu --}}
+            {{-- <a href="#" class="btn btn-info btn-md" data-bs-toggle="modal" data-bs-target="#myModalAddMhs">
                 Add Mahasiswa
-            </a>
+            </a> --}}
         </div>
         <div class="card-datatable table-responsive pt-0">
             <table id="mahasiswa" class="table table-striped">
@@ -83,9 +92,9 @@ Data Mahasiswa
                         {{-- <td>
                             @if($d['foto'])
                             <img src="{{ asset('storage/foto-mahasiswa/' . $d['foto']) }}" class="img-thumbnail" alt="Foto Mahasiswa" style="max-width: 80px;" data-bs-toggle="modal" data-bs-target="#gambarModalFotoMahasiswa" onclick="showModalFotoMahasiswa('{{ asset('storage/foto-mahasiswa/' . $d['foto']) }}')">
-                            @else
-                            <p class="text-center">-</p>
-                            @endif
+                        @else
+                        <p class="text-center">-</p>
+                        @endif
                         </td> --}}
                         <td>
                             <button type="submit" style="display: none;" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#myModalEditMhs-{{$d['id']}}">

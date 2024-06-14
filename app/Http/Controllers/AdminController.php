@@ -27,6 +27,7 @@ use App\Exports\SuratIzinPenelitianExport;
 use App\Exports\SuratKeteranganAktifExport;
 use App\Models\SuratKeteranganAktifOrtuPns;
 use App\Exports\SuratKeteranganAktifOrtuPnsExport;
+use App\Imports\MahasiswaImport;
 
 class AdminController extends Controller
 {
@@ -377,5 +378,28 @@ class AdminController extends Controller
         $mahasiswa->delete();
 
         return redirect()->route('index.mahasiswa')->with('success', 'Mahasiswa baru berhasil dihapus.');
+    }
+
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx',
+        ]);
+
+        try {
+            Excel::import(new MahasiswaImport, $request->file('file'));
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors = $e->errors();
+
+            foreach ($errors as &$error) {
+                $error = array_map(function ($message) {
+                    // remove alert error on row 2
+                    return preg_replace('/^There was an error on row \d+\./', '', $message);
+                }, $error);
+            }
+
+            return redirect()->route('index.mahasiswa')->withErrors($errors)->withInput();
+        }
+        return redirect()->route('index.mahasiswa')->with('success', 'Data mahasiswa berhasil ditambahkan.');
     }
 }
